@@ -19,6 +19,7 @@ int main()
     TUNome testeNome;
     TUNumeroDeCartaoDeCredito testeNumeroDeCartaoDeCredito;
     TUNumeroDeContaCorrente testeContaCorrente;
+    TUSenha testeSenha;
     TUTipoDeAcomodacao testeTipoAcomodacao;
     TUUsuario testeUsuario;
     //TUAcomodacao testeAcomodacao;
@@ -101,6 +102,13 @@ int main()
                                                break;
         case TUNumeroDeContaCorrente::FALHA: cout << "FALHA" << endl;
                                              break;
+    }
+
+    switch(testeSenha.run()){
+        case TUSenha::SUCESSO: cout << "senhaSUCESSO" << endl;
+                                                break;
+        case TUSenha::FALHA: cout << "senhaFALHA" << endl;
+                                                break;
     }
 
     switch(testeTipoAcomodacao.run()){

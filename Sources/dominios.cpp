@@ -381,6 +381,25 @@ void NumeroDeContaCorrente::setNumeroDeContaCorrente(string contaCorrente) throw
     this->contaCorrente = contaCorrente;
 }
 
+bool Senha::verificaRepeticao(string senha) throw (invalid_argument){
+    int i;
+    int verificadorTamanho;
+    char extratorCaracter;
+    //A-Z(0-25), a-z(26-51), 0-9(52-61), simbolos(62-66)
+    bool caracteres[QUANTIDADE_CARACTERES_PERMITIDOS];
+    
+    //Inicializando a contagem
+    verificadorTamanho = senha.size();
+    for (i = 0; i < QUANTIDADE_CARACTERES_PERMITIDOS; ++i){
+        caracteres[i] = 1;
+    }
+
+    //Verifica A-Z
+    for (i = 0; i < verificadorTamanho; i++)
+
+    return 0;
+}
+
 void Senha::validar(string senha) throw (invalid_argument){
     int verificadorTamanho;
     int isSimbolo;
@@ -406,8 +425,12 @@ void Senha::validar(string senha) throw (invalid_argument){
                         break;
                     }
                 }
+
                 if(!isSimbolo){
                     throw invalid_argument("Argumento invalido.");
+                }
+                else{
+                    bool teste = verificaRepeticao(senha);
                 }
             }
         }

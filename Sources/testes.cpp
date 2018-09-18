@@ -420,6 +420,44 @@ int TUNumeroDeContaCorrente::run(){
     return resultado;
 }
 
+void TUSenha::setUp(){
+    senha = new Senha();
+    resultado = SUCESSO;
+}
+
+void TUSenha::tearDown(){
+    delete senha;
+}
+
+void TUSenha::testarCenarioSucesso(){
+    try{
+        senha->setSenha(VALOR_VALIDO);
+        if (senha->getSenha() != VALOR_VALIDO)
+            resultado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        resultado = FALHA;
+    }
+}
+
+void TUSenha::testarCenarioFalha(){
+    try{
+        senha->setSenha(VALOR_INVALIDO);
+        resultado = FALHA;
+    }
+    catch(invalid_argument excecao){
+        return;
+    }
+}
+
+int TUSenha::run(){
+    setUp();
+    testarCenarioSucesso();
+    testarCenarioFalha();
+    tearDown();
+    return resultado;
+}
+
 void TUTipoDeAcomodacao::setUp(){
     acomodacao = new TipoDeAcomodacao();
     resultado = SUCESSO;
