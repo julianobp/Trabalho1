@@ -275,8 +275,9 @@ private:
 	string senha;
 	const static int TAMANHO = 8;
 	const static int TAMANHO_SIMBOLOS = 5;
-	const static int QUANTIDADE_CARACTERES_PERMITIDOS = 67;
+	const static int QUANTIDADE_CARACTERES = 256;
 	//Método responsável por validação
+	bool verificaCaracteresObrigatorios(string senha) throw (invalid_argument);
 	bool verificaRepeticao(string senha) throw (invalid_argument);
 	void validar(string) throw (invalid_argument);
 

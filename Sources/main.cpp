@@ -105,9 +105,9 @@ int main()
     }
 
     switch(testeSenha.run()){
-        case TUSenha::SUCESSO: cout << "senhaSUCESSO" << endl;
+        case TUSenha::SUCESSO: cout << "senha:SUCESSO" << endl;
                                                 break;
-        case TUSenha::FALHA: cout << "senhaFALHA" << endl;
+        case TUSenha::FALHA: cout << "senha:FALHA" << endl;
                                                 break;
     }
 
