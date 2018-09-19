@@ -382,6 +382,7 @@ void NumeroDeContaCorrente::setNumeroDeContaCorrente(string contaCorrente) throw
 }
 
 bool Senha::verificaRepeticao(string senha) throw (invalid_argument){
+    cout << "Repeticao" << endl;
     int i;
     int verificadorTamanho;
     char extratorCaracter;
@@ -410,6 +411,7 @@ void Senha::validar(string senha) throw (invalid_argument){
     verificadorTamanho = senha.size();
 
     if (verificadorTamanho != TAMANHO){
+        cout << "Tamanho invalido" << endl;
         throw invalid_argument("Argumento invalido.");
     }
     else{
@@ -438,6 +440,7 @@ void Senha::validar(string senha) throw (invalid_argument){
 }
 
 void Senha::setSenha(string senha) throw (invalid_argument){
+    cout << "Set senha" << endl;
     validar(senha);
     this->senha = senha;
 }

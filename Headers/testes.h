@@ -343,8 +343,8 @@ public:
 
 class TUSenha {
 private:
-    const string VALOR_VALIDO = "005698";
-    const string VALOR_INVALIDO = "a569874";
+    const string VALOR_VALIDO = "0124567";
+    const string VALOR_INVALIDO = "012345678";
 
     // Referência para o objeto a ser testado.
 

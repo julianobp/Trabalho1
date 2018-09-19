@@ -413,6 +413,7 @@ void TUNumeroDeContaCorrente::testarCenarioFalha(){
 }
 
 int TUNumeroDeContaCorrente::run(){
+    cout << "Rodando..." << endl;
     setUp();
     testarCenarioSucesso();
     testarCenarioFalha();
