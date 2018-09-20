@@ -7,6 +7,10 @@
 using namespace std;
 
 class Usuario {
+<<<<<<< HEAD
+=======
+
+>>>>>>> remotes/origin/master
 private:
     Nome nome;
     Identificador identificador;
@@ -39,7 +43,11 @@ public:
     }
 };
 
+<<<<<<< HEAD
 
+=======
+/*
+>>>>>>> remotes/origin/master
 class Acomodacao {
 private:
 	Identificador identificador;
@@ -76,6 +84,7 @@ public:
         return capacidade;
     }
 
+<<<<<<< HEAD
     void setDataInicio(Data dataInicio){
         this->dataInicio = dataInicio;
     }
@@ -89,6 +98,21 @@ public:
     }
 
     Data getDataTermino() const {
+=======
+    void setData(Data dataInicio, int test){
+        this->dataInicio = dataInicio;
+    }
+
+    Data getData() const {
+        return dataInicio;
+    }
+
+    void setData(Data dataTermino){
+        this->dataTermino = dataTermino;
+    }
+
+    Data getData() const {
+>>>>>>> remotes/origin/master
         return dataTermino;
     }
 
@@ -116,6 +140,10 @@ public:
         return preco;
     }
 };
+<<<<<<< HEAD
+=======
+*/
+>>>>>>> remotes/origin/master
 
 class CartaoDeCredito {
 private:
@@ -174,4 +202,8 @@ public:
     }
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> remotes/origin/master
 #endif // ENTIDADES_H_INCLUDED

@@ -1,5 +1,9 @@
 #include "dominios.h"
 
+<<<<<<< HEAD
+=======
+#include <iostream>//comentar depois
+>>>>>>> remotes/origin/master
 #include <string>
 #include <cstring>
 #include <vector>
