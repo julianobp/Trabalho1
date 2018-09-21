@@ -12,11 +12,10 @@ private:
     const string VALOR_VALIDO_NOME = "Jose Maria";
     const string VALOR_VALIDO_IDENTIFICADOR = "jose";
     const string VALOR_VALIDO_SENHA = "!A0b";
-
+    
     // Referência para o objeto a ser testado.
 
     Usuario *usuario;
-
     // Resultado do teste.
 
     int resultado;

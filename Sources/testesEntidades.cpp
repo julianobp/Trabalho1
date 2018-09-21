@@ -1,5 +1,5 @@
 #include "testesEntidades.h"
-
+#include <iostream>
 // Definições de métodos.
 
 void TUUsuario::setUp(){
@@ -11,17 +11,19 @@ void TUUsuario::tearDown(){
     delete usuario;
 }
 
-/*void TUUsuario::testarCenarioSucesso(){
+void TUUsuario::testarCenarioSucesso(){
+        Nome *nome;
+        Identificador *identificador;
+        Senha *senha;
         nome = new Nome();
-        identidicador = new Identificador();
+        identificador = new Identificador();
         senha = new Senha();
-        nome->setNome(VALOR_VALIDO_NOME)
-        identidicador->setIdentificador(VALOR_VALIDO_IDENTIFICADOR);
-        senha->setSenha(VALOR_VALIDO_SENHA);
-        usuario->setNome(nome);
-        usuario->setIdentificador(identidicador);
-        usuario->setSenha(senha);
-}*/
+        nome->setNome(VALOR_VALIDO_NOME);
+        usuario->setNomeUsuario(*nome);
+        Nome auxiliar = usuario->getNomeUsuario();
+
+        if(auxiliar.getNome() == VALOR_VALIDO_NOME) resultado = SUCESSO;
+}
 
 int TUUsuario::run(){
     setUp();
@@ -30,7 +32,7 @@ int TUUsuario::run(){
     return resultado;
 }
 
-
+/*
 void TUAcomodacao::setUp(){
     acomodacao = new Acomodacao();
     resultado = SUCESSO;
@@ -42,9 +44,9 @@ void TUAcomodacao::tearDown(){
 
 }
 
-/*void TUAcomodacao::testarCenarioSucesso(){
+void TUAcomodacao::testarCenarioSucesso(){
 
-}*/
+}
 
 int TUAcomodacao::run(){
     setUp();
@@ -62,9 +64,9 @@ void TUCartaoDeCredito::tearDown(){
     delete cartaoDeCredito;
 }
 
-/*void TUCartaoDeCredito::testarCenarioSucesso(){
+void TUCartaoDeCredito::testarCenarioSucesso(){
 
-}*/
+}
 
 int TUCartaoDeCredito::run(){
     setUp();
@@ -82,9 +84,9 @@ void TUContaCorrente::tearDown(){
     delete contaCorrente;
 }
 
-/*void TUContaCorrente::testarCenarioSucesso(){
+void TUContaCorrente::testarCenarioSucesso(){
     
-}*/
+}
 
 int TUContaCorrente::run(){
     setUp();
@@ -92,3 +94,4 @@ int TUContaCorrente::run(){
     tearDown();
     return resultado;
 }
+*/
