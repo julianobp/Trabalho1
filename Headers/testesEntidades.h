@@ -10,13 +10,18 @@ using namespace std;
 class TUUsuario {
 private:
     const string VALOR_VALIDO_NOME = "Jose Maria";
+<<<<<<< HEAD
     const string VALOR_VALIDO_IDENTIFICADOR = "maria";
     const string VALOR_VALIDO_SENHA = "!A0b$Yc1";
 
+=======
+    const string VALOR_VALIDO_IDENTIFICADOR = "jose";
+    const string VALOR_VALIDO_SENHA = "!A0b";
+    
+>>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
     // Referência para o objeto a ser testado.
 
     Usuario *usuario;
-
     // Resultado do teste.
 
     int resultado;

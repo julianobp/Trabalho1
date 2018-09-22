@@ -105,10 +105,14 @@ private:
 	const static int NUMERO_MESES = 12;
 	const static int ANO_MINIMO = 2000;
 	const static int ANO_MAXIMO = 2099;
+
+	//Métodos auxiliares de validação
+
+	bool verificaMes(string nomeMes, string *meses);
+	bool verificaBissexto(int) throw (invalid_argument);
+	
 	//Método responsável por validação
 
-	bool isMonth(string nomeMes, string *meses);
-	bool isBissextile(int) throw (invalid_argument);
 	void validar(string) throw (invalid_argument);
 
 public:

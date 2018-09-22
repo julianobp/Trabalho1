@@ -1,5 +1,5 @@
 #include "testesEntidades.h"
-
+#include <iostream>
 // Definições de métodos.
 
 void TUUsuario::setUp(){
@@ -15,6 +15,7 @@ void TUUsuario::testarCenarioSucesso(){
         Nome *nome;
         Identificador *identificador;
         Senha *senha;
+<<<<<<< HEAD
 
         nome = new Nome();
         identificador = new Identificador();
@@ -43,6 +44,16 @@ void TUUsuario::testarCenarioSucesso(){
         if(auxiliarSenha.getSenha() == VALOR_VALIDO_SENHA){
             resultado = SUCESSO;
         }
+=======
+        nome = new Nome();
+        identificador = new Identificador();
+        senha = new Senha();
+        nome->setNome(VALOR_VALIDO_NOME);
+        usuario->setNomeUsuario(*nome);
+        Nome auxiliar = usuario->getNomeUsuario();
+
+        if(auxiliar.getNome() == VALOR_VALIDO_NOME) resultado = SUCESSO;
+>>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
 }
 
 int TUUsuario::run(){
@@ -52,7 +63,7 @@ int TUUsuario::run(){
     return resultado;
 }
 
-
+/*
 void TUAcomodacao::setUp(){
     acomodacao = new Acomodacao();
     resultado = SUCESSO;
@@ -65,6 +76,7 @@ void TUAcomodacao::tearDown(){
 }
 
 void TUAcomodacao::testarCenarioSucesso(){
+<<<<<<< HEAD
     Identificador *identificador;
     TipoDeAcomodacao *tipoAcomodacao;
     CapacidadeDeAcomodacao *capacidade;
@@ -141,6 +153,8 @@ void TUAcomodacao::testarCenarioSucesso(){
     if(auxiliarDiaria.getDiaria() == VALOR_VALIDO_PRECO){
         resultado = SUCESSO;
     }
+=======
+>>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
 
 }
 
@@ -161,6 +175,7 @@ void TUCartaoDeCredito::tearDown(){
 }
 
 void TUCartaoDeCredito::testarCenarioSucesso(){
+<<<<<<< HEAD
     NumeroDeCartaoDeCredito *numeroDeCartaoDeCredito;
     DataDeValidade *dataDeValidade;
 
@@ -184,6 +199,9 @@ void TUCartaoDeCredito::testarCenarioSucesso(){
         resultado = SUCESSO;
     }
 
+=======
+
+>>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
 }
 
 int TUCartaoDeCredito::run(){
@@ -203,6 +221,7 @@ void TUContaCorrente::tearDown(){
 }
 
 void TUContaCorrente::testarCenarioSucesso(){
+<<<<<<< HEAD
     NumeroDeContaCorrente *numeroConta;
     Agencia *agencia;
     Banco *banco;
@@ -234,6 +253,8 @@ void TUContaCorrente::testarCenarioSucesso(){
     if(auxiliarBanco.getBanco() == VALOR_VALIDO_BANCO){
         resultado = SUCESSO;
     }
+=======
+>>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
     
 }
 
@@ -243,3 +264,4 @@ int TUContaCorrente::run(){
     tearDown();
     return resultado;
 }
+*/

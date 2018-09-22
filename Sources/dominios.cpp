@@ -11,15 +11,16 @@ using namespace std;
 void Agencia::validar(string agencia) throw (invalid_argument){
 	int verificadorTamanho;
 	int i;
-	//Lança exceção se o tamanho da string agencia for diferente do tamanho esperado
-	// ou se algum caracter da string apresentar valor diferente de 0-9
+	
+    verificadorTamanho = agencia.size();
 
-	verificadorTamanho = agencia.size();
+    //Lança exceção se o tamanho da string agencia for diferente do tamanho esperado
+	// ou se algum caracter da string apresentar valor diferente de 0-9
 
 	if(verificadorTamanho != TAMANHO){
 		throw invalid_argument("Argumento invalido.");
 	}
-	else{//testar a validade de cada digito
+	else{  //testar a validade de cada digito
 		for (i = 0; i < TAMANHO; ++i){
 			if(!isdigit(agencia[i])){
 				throw invalid_argument("Argumento invalido.");
@@ -38,6 +39,9 @@ void Banco::validar(string banco) throw (invalid_argument){
     int i;
 
     verificadorTamanho = banco.size();
+
+    //Lança exceção se o tamanho da string banco for diferente do tamanho esperado
+	// ou se algum caracter da string apresentar valor diferente de 0-9
 
     if ( verificadorTamanho != TAMANHO ){
         throw invalid_argument("Argumento invalido.");
@@ -85,31 +89,36 @@ void Diaria::setDiaria(double preco) throw (invalid_argument){
     this->preco = preco;
 }
 
-bool Data::isMonth(string nomeMes, string *meses){
-    bool isMes = 0;
+int Data::verificaMes(string nomeMes, string *meses){
+    int verificador = INVALIDO;
     for(int i = 0; i < NUMERO_MESES; ++i){
         if(nomeMes.compare(meses[i]) == 0){
-            isMes = 1;
+            verificador = VALIDO;
             break;
         }
     }
+
+    return verificador;
 }
 
-bool Data::isBissextile(int ano) throw (invalid_argument){
+int Data::verificaBissexto(int ano) throw (invalid_argument){
     if((ano % 100 == 0) && (ano % 400 != 0))
-        return 0;
+        return INVALIDO;
     else if (ano % 4 == 0)
-        return 1;
+        return VALIDO;
 }
 
 void Data::validar(string data) throw (invalid_argument){
     int verificadorTamanho;
-    int isMes;
+    int verificadorMes;
     int i;
     char dia[TAMANHO_PADRAO_DIA];
     char mes[TAMANHO_PADRAO_MES];
-    string nomeMes;
     char ano[TAMANHO_PADRAO_ANO];
+    string nomeMes;
+    verificadorTamanho = data.size();
+    
+    
     string meses[NUMERO_MESES] = {"jan", "fev", "mar", "abr",
                                   "mai", "jun", "jul", "ago",
                                   "set", "out", "nov", "dez"};
@@ -117,7 +126,7 @@ void Data::validar(string data) throw (invalid_argument){
                                          31, 30, 31, 31,
                                          30, 31, 30, 31};
 
-    verificadorTamanho = data.size();
+    verificadorMes = verificaMes(nomeMes, &meses[0]);
     
     if( (verificadorTamanho != TAMANHO) ){
         throw invalid_argument("Argumento invalido.");
@@ -147,16 +156,16 @@ void Data::validar(string data) throw (invalid_argument){
                     nomeMes[i] = tolower(nomeMes[i]);
                 }
             }
+            
+            // Lança exceção se o nome do mês não for encontrado no vetor de string dos meses
 
-            isMes = isMonth(nomeMes, &meses[0]);
-
-            if(!isMes){
+            if(verificadorMes == INVALIDO){
                 throw invalid_argument("Argumento invalido.");
             }
             else if(atoi(dia) > numeroDiasDoMes[i]){
                 throw invalid_argument("Argumento invalido.");
             }
-            else if(!isBissextile(atoi(ano)) && !nomeMes.compare("fev") && (atoi(dia) > 28)){
+            else if((verficaBissexto(atoi(ano)) == INVALIDO)  && (!nomeMes.compare("fev")) && (atoi(dia) > FEVEREIRO_NAO_BISSEXTO)){
                 throw invalid_argument("Argumento invalido.");
             }
         }

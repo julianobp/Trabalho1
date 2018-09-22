@@ -75,8 +75,13 @@ public:
         return capacidadeAcomodacao;
     }
 
+<<<<<<< HEAD
     void setDataInicioAcomodacao(Data dataInicioAcomodacao){
         this->dataInicioAcomodacao = dataInicioAcomodacao;
+=======
+    void setDataInicio(Data dataInicio){
+        this->dataInicio = dataInicio;
+>>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
     }
 
     Data getDataInicioAcomodacao() const {
@@ -87,6 +92,7 @@ public:
         this->dataTerminoAcomodacao = dataTerminoAcomodacao;
     }
 
+<<<<<<< HEAD
     Data getDataTerminoAcomodacao() const {
         return dataTerminoAcomodacao;
     }
@@ -101,6 +107,10 @@ public:
 
     void setEstadoAcomodacao(Estado siglaAcomodacao){
         this->siglaAcomodacao = siglaAcomodacao;
+=======
+    Data getDataTermino() const {
+        return dataTermino;
+>>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
     }
 
     Estado getEstadoAcomodacao() const {
