@@ -6,11 +6,7 @@
 
 using namespace std;
 
-<<<<<<< HEAD
 class Agencia {
-=======
-class Agencia { //Formato XXXXX onde X é dígito (0 - 9).
->>>>>>> remotes/origin/master
 private:
 	string agencia;
 	const static int TAMANHO = 5;
@@ -51,11 +47,7 @@ public:
 
 };
 
-<<<<<<< HEAD
 class CapacidadeDeAcomodacao {
-=======
-class CapacidadeDeAcomodacao { //Valor de 1 a 9.
->>>>>>> remotes/origin/master
 private:
 	int capacidade;
 	const static int CAPACIDADE_MAXIMA = 9;
@@ -76,11 +68,7 @@ public:
     }
 };
 
-<<<<<<< HEAD
 class Diaria {
-=======
-class Diaria { //Valor de R$ 1,00 a R$ 10.000,00.
->>>>>>> remotes/origin/master
 private:
 	double preco;
 	const static int PRECO_MAXIMO = 10000;
@@ -102,13 +90,7 @@ public:
 
 };
 
-<<<<<<< HEAD
 class Data {
-=======
-class Data { //Formato DD/MMM/AAAA. DD é número de 01 e 31. MMM é jan,
-			//fev, mar, abr, mai, jun, jul, ago, set, out, nov ou dez. AAAA é número de
-			//2000 a 2099. A data considera anos bissextos.
->>>>>>> remotes/origin/master
 private:
 	string data;
 	const static int TAMANHO = 11;
@@ -141,11 +123,7 @@ public:
 	
 };
 
-<<<<<<< HEAD
 class DataDeValidade {
-=======
-class DataDeValidade { //Formato MM/AA. MM é número de 01 a 12. AA é número de 00 a 99.
->>>>>>> remotes/origin/master
 private:
 	string validade;
 	const static int TAMANHO = 5;
@@ -177,12 +155,7 @@ public:
 	
 };
 
-<<<<<<< HEAD
 class Estado {
-=======
-class Estado { //AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE,
-				//PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
->>>>>>> remotes/origin/master
 private:
 	string sigla;
 	const static int TAMANHO_PADRAO_UF = 2;
@@ -205,11 +178,7 @@ public:
 
 };
 
-<<<<<<< HEAD
 class Identificador {
-=======
-class Identificador { //Formato XXXXX onde X é letra minúscula (a - z).
->>>>>>> remotes/origin/master
 private:
 	string identificador;
 	const static int TAMANHO = 5;
@@ -230,13 +199,7 @@ public:
 
 };
 
-<<<<<<< HEAD
 class Nome {
-=======
-class Nome { //Formato XXXXXXXXXXXXXXX . Cada X pode ser letra, espaço ou ponto.
-			//Pelos menos um caracter é letra. Não há espaços seguidos. Ponto é precedido
-			//por letra.
->>>>>>> remotes/origin/master
 private:
 	string nome;
 	const static int TAMANHO_MAXIMO = 15;
@@ -257,12 +220,7 @@ public:
 
 };
 
-<<<<<<< HEAD
 class NumeroDeCartaoDeCredito {
-=======
-class NumeroDeCartaoDeCredito { //Formato XXXXXXXXXXXXXXXX onde X é dígito (0 – 9). Número válido
-								//segundo o algoritmo de Luhn (https://en.wikipedia.org/wiki/Luhn_algorithm).
->>>>>>> remotes/origin/master
 private:
 	string numCartaoDeCredito;
 	const static int TAMANHO = 16;
@@ -282,11 +240,7 @@ public:
 
 };
 
-<<<<<<< HEAD
 class NumeroDeContaCorrente {
-=======
-class NumeroDeContaCorrente { //Formato XXXXXX onde X é dígito (0 – 9).
->>>>>>> remotes/origin/master
 private:
 	string contaCorrente;
 	const static int TAMANHO_MAXIMO = 6;
@@ -307,14 +261,7 @@ public:
 
 };
 
-<<<<<<< HEAD
 class Senha {
-=======
-class Senha { //Formato XXXXXXXX onde X pode ser um símbolo (! # $ % &), uma letra
-				//maiúscula ou minúscula (A – Z a – z) ou um dígito (0 a 9). Não há caracters
-				//repetidos. Há, pelo menos, uma letra maiúscula, uma minúscula, um dígito e
-				//um símbolo.
->>>>>>> remotes/origin/master
 private:
 	string senha;
 	const static int TAMANHO = 8;
@@ -337,11 +284,7 @@ public:
 
 };
 
-<<<<<<< HEAD
 class TipoDeAcomodacao {
-=======
-class TipoDeAcomodacao { //Apartamento, Casa, Flat
->>>>>>> remotes/origin/master
 private:
 	string acomodacao;
 	const static int TAMANHO_VETOR = 3; 
@@ -361,4 +304,5 @@ public:
     }
 
 };
+
 #endif // DOMINIOS_H_INCLUDED

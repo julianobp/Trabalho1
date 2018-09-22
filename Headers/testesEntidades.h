@@ -10,8 +10,8 @@ using namespace std;
 class TUUsuario {
 private:
     const string VALOR_VALIDO_NOME = "Jose Maria";
-    const string VALOR_VALIDO_IDENTIFICADOR = "jose";
-    const string VALOR_VALIDO_SENHA = "!A0b";
+    const string VALOR_VALIDO_IDENTIFICADOR = "maria";
+    const string VALOR_VALIDO_SENHA = "!A0b$Yc1";
 
     // Referência para o objeto a ser testado.
 
@@ -39,7 +39,7 @@ public:
 
 class TUAcomodacao {
 private:
-    const string VALOR_VALIDO_IDENTIFICADOR = "canarinhos";
+    const string VALOR_VALIDO_IDENTIFICADOR = "lucas";
     const string VALOR_VALIDO_ACOMODACAO = "Flat";
     const static int VALOR_VALIDO_CAPACIDADE = 2;
     const string VALOR_VALIDO_INICIO = "01/jan/2016";
