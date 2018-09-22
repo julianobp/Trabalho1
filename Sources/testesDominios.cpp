@@ -1,6 +1,9 @@
 #include "testesDominios.h"
-
+#include <iostream>
+#include <string>
 // Definições de métodos.
+
+using namespace std;//remover
 
 void TUAgencia::setUp(){
     agencia = new Agencia();
@@ -166,8 +169,9 @@ void TUData::tearDown(){
 void TUData::testarCenarioSucesso(){
     try{
         data->setData(VALOR_VALIDO);
-        if (data->getData() != VALOR_VALIDO)
+        if (data->getData() != VALOR_VALIDO){
             resultado = FALHA;
+        }
     }
     catch(invalid_argument excecao){
         resultado = FALHA;

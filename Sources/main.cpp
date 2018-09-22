@@ -57,9 +57,9 @@ int main()
     }
 
     switch(testeData.run()){
-        case TUAgencia::SUCESSO: cout << "SUCESSO" << endl;
+        case TUData::SUCESSO: cout << "SUCESSO" << endl;
                                  break;
-        case TUAgencia::FALHA  : cout << "FALHA" << endl;
+        case TUData::FALHA  : cout << "FALHA" << endl;
                                  break;
     }
 

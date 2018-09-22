@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <locale>
 
+#include <iostream>
+
 using namespace std;
 
 void Agencia::validar(string agencia) throw (invalid_argument){
@@ -14,13 +16,15 @@ void Agencia::validar(string agencia) throw (invalid_argument){
 	
     verificadorTamanho = agencia.size();
 
-    //Lança exceção se o tamanho da string agencia for diferente do tamanho esperado
+    // Lança exceção se o tamanho da string agencia for diferente do tamanho esperado
 	// ou se algum caracter da string apresentar valor diferente de 0-9
 
 	if(verificadorTamanho != TAMANHO){
 		throw invalid_argument("Argumento invalido.");
 	}
-	else{  //testar a validade de cada digito
+	else{  
+        
+        // Testa a validade de cada digito
 		for (i = 0; i < TAMANHO; ++i){
 			if(!isdigit(agencia[i])){
 				throw invalid_argument("Argumento invalido.");
@@ -77,7 +81,7 @@ void CapacidadeDeAcomodacao::setCapacidade(int capacidade) throw (invalid_argume
 
 void Diaria::validar(double preco) throw (invalid_argument){
 
- 	//Lança exceção se o valor for maior ou menor que os limites definidos
+ 	//Lança exceção se o preço for maior ou menor que os limites definidos
 
     if (preco > PRECO_MAXIMO || preco < PRECO_MINIMO){
         throw invalid_argument("Argumento invalido.");
@@ -92,8 +96,8 @@ void Diaria::setDiaria(double preco) throw (invalid_argument){
 int Data::verificaMes(string nomeMes, string *meses){
     int verificador = INVALIDO;
     for(int i = 0; i < NUMERO_MESES; ++i){
-        if(nomeMes.compare(meses[i]) == 0){
-            verificador = VALIDO;
+        if( nomeMes == meses[i]){
+            verificador = ++i;
             break;
         }
     }
@@ -102,10 +106,17 @@ int Data::verificaMes(string nomeMes, string *meses){
 }
 
 int Data::verificaBissexto(int ano) throw (invalid_argument){
-    if((ano % 100 == 0) && (ano % 400 != 0))
+    
+    // Se o ano for múltiplo de 100 e não for múltiplo de 400 ou
+    // ano não for múltiplo de 4, então NÃO É bissexto
+    if((ano % 100 == 0) && (ano % 400 != 0) || (ano % 4 != 0)){
         return INVALIDO;
-    else if (ano % 4 == 0)
+    }
+    
+    // Do contrário, o ano certamente É bissexto.
+    else{
         return VALIDO;
+    }
 }
 
 void Data::validar(string data) throw (invalid_argument){
@@ -118,7 +129,6 @@ void Data::validar(string data) throw (invalid_argument){
     string nomeMes;
     verificadorTamanho = data.size();
     
-    
     string meses[NUMERO_MESES] = {"jan", "fev", "mar", "abr",
                                   "mai", "jun", "jul", "ago",
                                   "set", "out", "nov", "dez"};
@@ -126,51 +136,68 @@ void Data::validar(string data) throw (invalid_argument){
                                          31, 30, 31, 31,
                                          30, 31, 30, 31};
 
+    data.copy(dia, TAMANHO_PADRAO_DIA, POSICAO_DIA);
+    data.copy(mes, TAMANHO_PADRAO_MES, POSICAO_SEPARADOR_DIA_MES + 1);
+    data.copy(ano, TAMANHO_PADRAO_ANO, POSICAO_SEPARADOR_MES_ANO + 1); 
+    nomeMes = mes;
+
+    //Converte os caracteres, se do tipo letra, da string nomeMes para caixa baixa
+    for(i = 0; i < TAMANHO_PADRAO_MES; ++i){
+        if(isalpha(nomeMes[i])){
+            nomeMes[i] = tolower(nomeMes[i]);
+        }
+    }
+
     verificadorMes = verificaMes(nomeMes, &meses[0]);
     
+    // Lança exceção se o tamanho da string agencia for diferente do tamanho esperado
     if( (verificadorTamanho != TAMANHO) ){
         throw invalid_argument("Argumento invalido.");
     }
+
+    // Lança exceção se não for encontrado os caracteres separadores dos campos da data
+    // na posiçãoe esperada, violando o formato
     else if( data[POSICAO_SEPARADOR_DIA_MES] != '/' &&
              data[POSICAO_SEPARADOR_MES_ANO] != '/'){
         throw invalid_argument("Argumento invalido.");
     }
-    else{
-        data.copy(dia, TAMANHO_PADRAO_DIA, POSICAO_DIA);
-        data.copy(mes, TAMANHO_PADRAO_MES, POSICAO_SEPARADOR_DIA_MES + 1);
-        data.copy(ano, TAMANHO_PADRAO_ANO, POSICAO_SEPARADOR_MES_ANO + 1); 
-        nomeMes = mes;
 
-        if(atoi(dia) < DIA_MINIMO || atoi(dia) > DIA_MAXIMO){
+    // Lança exceção se o dia estiver fora do intervalo definido com válido
+    else if(atoi(dia) < DIA_MINIMO || atoi(dia) > DIA_MAXIMO){
+        throw invalid_argument("Argumento invalido.");
+    }
+
+    // Lança exceção se o ano estiver fora do intervalo definido como válido
+    else if(atoi(ano) < ANO_MINIMO || atoi(ano) > ANO_MAXIMO){
+        throw invalid_argument("Argumento invalido.");
+    }
+    else{
+
+        // Lança exceção se houver caracteres que não são letra na string nomeMes
+        for(i = 0; i < TAMANHO_PADRAO_MES; ++i){
+            if(!isalpha(nomeMes[i])){
+                throw invalid_argument("Argumento invalido.");
+            }
+        }
+        
+        // Lança exceção se o nome do mês não for encontrado no vetor de string dos meses
+        // ou se o dia não existir para o mês dada
+        // ou se, para dado ano bissexto e para o mês de ferevereiro, o dia for maior que
+        // o limite dado ao mês de fereiro em ano não bissexto
+        if(verificadorMes == INVALIDO){
             throw invalid_argument("Argumento invalido.");
         }
-        else if(atoi(ano) < ANO_MINIMO || atoi(ano) > ANO_MAXIMO){
+        else if(atoi(dia) > numeroDiasDoMes[verificadorMes - 1]){
             throw invalid_argument("Argumento invalido.");
         }
         else{
-            for(i = 0; i < TAMANHO_PADRAO_MES; ++i){
-                if(!isalpha(nomeMes[i])){
-                    throw invalid_argument("Argumento invalido.");
-                }
-                else{
-                    nomeMes[i] = tolower(nomeMes[i]);
-                }
-            }
-            
-            // Lança exceção se o nome do mês não for encontrado no vetor de string dos meses
-
-            if(verificadorMes == INVALIDO){
-                throw invalid_argument("Argumento invalido.");
-            }
-            else if(atoi(dia) > numeroDiasDoMes[i]){
-                throw invalid_argument("Argumento invalido.");
-            }
-            else if((verficaBissexto(atoi(ano)) == INVALIDO)  && (!nomeMes.compare("fev")) && (atoi(dia) > FEVEREIRO_NAO_BISSEXTO)){
+            if((verificaBissexto(atoi(ano)) == INVALIDO)  && (nomeMes == "fev") && ( atoi(dia) > FEVEREIRO_NAO_BISSEXTO )){
                 throw invalid_argument("Argumento invalido.");
             }
         }
     }
 }
+
 
 void Data::setData(string data) throw (invalid_argument){
     validar(data);
