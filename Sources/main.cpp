@@ -23,191 +23,120 @@ int main()
     TUSenha testeSenha;
     TUTipoDeAcomodacao testeTipoAcomodacao;
     TUUsuario testeUsuario;
-<<<<<<< HEAD
     TUAcomodacao testeAcomodacao;
     TUCartaoDeCredito testeCartao;
     TUContaCorrente testeConta;
 
-
-    switch(testeAgencia.run()){
-        case TUAgencia::SUCESSO: cout << "TUAgencia : SUCESSO" << endl;
-=======
-    //TUAcomodacao testeAcomodacao;
-    //TUCartaoDeCredito testeCartao;
-    //TUContaCorrente testeConta;
-
-
     switch(testeAgencia.run()){
         case TUAgencia::SUCESSO: cout << "SUCESSO" << endl;
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
                                  break;
-        case TUAgencia::FALHA  : cout << "TUAgencia : FALHA" << endl;
+        case TUAgencia::FALHA  : cout << "FALHA" << endl;
                                  break;
     }
     
     switch(testeBanco.run()){
-<<<<<<< HEAD
-        case TUBanco::SUCESSO: cout << "TUBanco : SUCESSO" << endl;
-=======
         case TUBanco::SUCESSO: cout << "SUCESSO" << endl;
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
                                break;
-        case TUBanco::FALHA  : cout << "TUBanco : FALHA" << endl;
+        case TUBanco::FALHA  : cout << "FALHA" << endl;
                                break;
     }
 
     switch(testeCapacidade.run()){
-        case TUCapacidadeDeAcomodacao::SUCESSO: cout << "TUCapacidadeDeAcomodacao : SUCESSO" << endl;
+        case TUCapacidadeDeAcomodacao::SUCESSO: cout << "SUCESSO" << endl;
                                 				break;
-        case TUCapacidadeDeAcomodacao::FALHA  : cout << "TUCapacidadeDeAcomodacao : FALHA" << endl;
+        case TUCapacidadeDeAcomodacao::FALHA  : cout << "FALHA" << endl;
                                 				break;
     }
 
     switch(testeDiaria.run()){
-        case TUDiaria::SUCESSO: cout << "TUDiaria : SUCESSO" << endl;
+        case TUDiaria::SUCESSO: cout << "SUCESSO" << endl;
                                 break;
-        case TUDiaria::FALHA  : cout << "TUDiaria : FALHA" << endl;
+        case TUDiaria::FALHA  : cout << "FALHA" << endl;
                                 break;
     }
 
     switch(testeData.run()){
-<<<<<<< HEAD
-        case TUData::SUCESSO: cout << "SUCESSO" << endl;
-                                 break;
-        case TUData::FALHA  : cout << "FALHA" << endl;
-=======
-<<<<<<< HEAD
-        case TUAgencia::SUCESSO: cout << "TUAgencia : SUCESSO" << endl;
-=======
         case TUAgencia::SUCESSO: cout << "SUCESSO" << endl;
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
                                  break;
-        case TUAgencia::FALHA  : cout << "TUAgencia : FALHA" << endl;
->>>>>>> c8969ba15a911ac40e7ddf3ea01a106dd2664bcb
+        case TUAgencia::FALHA  : cout << "FALHA" << endl;
                                  break;
     }
 
     switch(testeDataDeValidade.run()){
-<<<<<<< HEAD
-        case TUDataDeValidade::SUCESSO: cout << "TUDataDeValidade : SUCESSO" << endl;
-=======
         case TUDataDeValidade::SUCESSO: cout << "SUCESSO" << endl;
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
                                         break;
-        case TUDataDeValidade::FALHA  : cout << "TUDataDeValidade : FALHA" << endl;
+        case TUDataDeValidade::FALHA  : cout << "FALHA" << endl;
                                         break;
     }
 
     switch(testeEstado.run()){
-        case TUEstado::SUCESSO: cout << "TUEstado : SUCESSO" << endl;
+        case TUEstado::SUCESSO: cout << "SUCESSO" << endl;
                                 break;
-        case TUEstado::FALHA  : cout << "TUEstado : FALHA" << endl;
+        case TUEstado::FALHA  : cout << "FALHA" << endl;
                                 break;
     }
 
     switch(testeIdentificador.run()){
-<<<<<<< HEAD
-        case TUIdentificador::SUCESSO: cout << "TUIdentificador : SUCESSO" << endl;
-=======
         case TUIdentificador::SUCESSO: cout << "SUCESSO" << endl;
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
                                        break;
-        case TUIdentificador::FALHA  : cout << "TUIdentificador : FALHA" << endl;
+        case TUIdentificador::FALHA  : cout << "FALHA" << endl;
                                        break;
     }
 
     switch(testeNome.run()){
-<<<<<<< HEAD
-        case TUNome::SUCESSO: cout << "TUNome : SUCESSO" << endl;
-=======
         case TUNome::SUCESSO: cout << "SUCESSO" << endl;
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
                               break;
-        case TUNome::FALHA  : cout << "TUNome : FALHA" << endl;
+        case TUNome::FALHA  : cout << "FALHA" << endl;
                               break;
     }
 
     switch(testeNumeroDeCartaoDeCredito.run()){
-<<<<<<< HEAD
-        case TUNumeroDeCartaoDeCredito::SUCESSO: cout << "TUNumeroDeCartaoDeCredito : SUCESSO" << endl;
-=======
         case TUNumeroDeCartaoDeCredito::SUCESSO: cout << "SUCESSO" << endl;
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
                                                  break;
-        case TUNumeroDeCartaoDeCredito::FALHA  : cout << "TUNumeroDeCartaoDeCredito : FALHA" << endl;
+        case TUNumeroDeCartaoDeCredito::FALHA  : cout << "FALHA" << endl;
                                                  break;
     }
 
     switch(testeContaCorrente.run()){
-        case TUNumeroDeContaCorrente::SUCESSO: cout << "TUNumeroDeContaCorrente : SUCESSO" << endl;
+        case TUNumeroDeContaCorrente::SUCESSO: cout << "SUCESSO" << endl;
                                                break;
-<<<<<<< HEAD
-        case TUNumeroDeContaCorrente::FALHA  : cout << "TUNumeroDeContaCorrente : FALHA" << endl;
-=======
         case TUNumeroDeContaCorrente::FALHA  : cout << "FALHA" << endl;
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
                                                break;
     }
 
     switch(testeSenha.run()){
-        case TUSenha::SUCESSO: cout << "TUSenha : SUCESSO" << endl;
+        case TUSenha::SUCESSO: cout << "SUCESSO" << endl;
                                break;
-        case TUSenha::FALHA  : cout << "TUSenha : FALHA" << endl;
+        case TUSenha::FALHA  : cout << "FALHA" << endl;
                                break;
     }
 
     switch(testeTipoAcomodacao.run()){
-        case TUTipoDeAcomodacao::SUCESSO: cout << "TUTipoDeAcomodacao : SUCESSO" << endl;
+        case TUTipoDeAcomodacao::SUCESSO: cout << "SUCESSO" << endl;
                                           break;
-<<<<<<< HEAD
-        case TUTipoDeAcomodacao::FALHA  : cout << "TUTipoDeAcomodacao : FALHA" << endl;
-=======
         case TUTipoDeAcomodacao::FALHA  : cout << "FALHA" << endl;
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
                                           break;
     }
 
     switch(testeUsuario.run()){
-<<<<<<< HEAD
-        case TUUsuario::SUCESSO: cout << "TUUsuario : SUCESSO" << endl;
-                                 break;
+        case TUUsuario::SUCESSO: cout << "TUUSUCESSO" << endl;
+                                          break;
     }
 
     switch(testeAcomodacao.run()){
-        case TUAcomodacao::SUCESSO: cout << "TUAcomodacao : SUCESSO" << endl;
-                                    break;
-    }
-=======
-        case TUUsuario::SUCESSO: cout << "TUUSUCESSO" << endl;
-                                 break;
-    }
-
-    
-    /*switch(testeAcomodacao.run()){
-        case TUAcomodacao::SUCESSO: cout << "SUCESSO" << endl;
+        case TUAcomodacao::SUCESSO: cout << "TUAcoSUCESSO" << endl;
                                           break;
-        case TUAcomodacao::FALHA: cout << "FALHA" << endl;
-                                        break;
     }
     
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
-
     switch(testeCartao.run()){
-        case TUCartaoDeCredito::SUCESSO: cout << "TUCartaoDeCredito : SUCESSO" << endl;
+        case TUCartaoDeCredito::SUCESSO: cout << "TUCartaoSUCESSO" << endl;
                                          break;
     }
 
     switch(testeConta.run()){
-        case TUContaCorrente::SUCESSO: cout << "TUContaCorrente : SUCESSO" << endl;
+        case TUContaCorrente::SUCESSO: cout << "TUContaSUCESSO" << endl;
                                        break;
-<<<<<<< HEAD
     }
     
-=======
-        case TUContaCorrente::FALHA: cout << "FALHA" << endl;
-                                     break;
-    }*/
->>>>>>> 40f12d1e27a0301754f1c11a185d07ba6ce3d185
-
     return 0;
 }
