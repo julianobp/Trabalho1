@@ -132,8 +132,8 @@ public:
 
 class TUData {
 private:
-	const string VALOR_VALIDO   = "29/fev/2016";
-    const string VALOR_INVALIDO = "29/fev/2018";//valida?
+	const string VALOR_VALIDO   = "29/FeV/2016";
+    const string VALOR_INVALIDO = "29/fev/2018";
 
     // Referência para o objeto a ser testado.
 

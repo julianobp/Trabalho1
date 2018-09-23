@@ -95,7 +95,7 @@ void Diaria::setDiaria(double preco) throw (invalid_argument){
 
 int Data::verificaMes(string nomeMes, string *meses){
     int verificador = INVALIDO;
-    for(int i = 0; i < NUMERO_MESES; ++i){
+    for(int i = 0; i < meses->size(); ++i){
         if( nomeMes == meses[i]){
             verificador = ++i;
             break;
@@ -142,7 +142,7 @@ void Data::validar(string data) throw (invalid_argument){
     nomeMes = mes;
 
     //Converte os caracteres, se do tipo letra, da string nomeMes para caixa baixa
-    for(i = 0; i < TAMANHO_PADRAO_MES; ++i){
+    for(i = 0; nomeMes[i] != '\0'; ++i){
         if(isalpha(nomeMes[i])){
             nomeMes[i] = tolower(nomeMes[i]);
         }
@@ -174,7 +174,7 @@ void Data::validar(string data) throw (invalid_argument){
     else{
 
         // Lança exceção se houver caracteres que não são letra na string nomeMes
-        for(i = 0; i < TAMANHO_PADRAO_MES; ++i){
+        for(i = 0; nomeMes[i] != '\0'; ++i){
             if(!isalpha(nomeMes[i])){
                 throw invalid_argument("Argumento invalido.");
             }
@@ -198,75 +198,89 @@ void Data::validar(string data) throw (invalid_argument){
     }
 }
 
-
 void Data::setData(string data) throw (invalid_argument){
     validar(data);
     this->data = data;
 }
 
-void DataDeValidade::validar(string validade) throw (invalid_argument){
-    int verificadorTamanho, verificadorMes, verificadorAno;
+void DataDeValidade::validar(string dataDeValidade) throw (invalid_argument){
+    int verificadorTamanho;
     int i;
     char mes[TAMANHO_PADRAO_MES],ano[TAMANHO_PADRAO_ANO];
 
-    verificadorTamanho = validade.size();
-    validade.copy(mes,POSICAO_FINAL_MES + 1,POSICAO_INICIAL_MES);
-    validade.copy(ano,POSICAO_FINAL_ANO,POSICAO_INICIAL_ANO);
+    verificadorTamanho = dataDeValidade.size();
+    dataDeValidade.copy(mes,POSICAO_FINAL_MES, POSICAO_INICIAL_MES);
+    dataDeValidade.copy(ano,POSICAO_FINAL_ANO,POSICAO_INICIAL_ANO);
 
+    // Lança exceção se o tamanho da string dataDeValidade for diferente do tamanho esperado
     if(verificadorTamanho != TAMANHO){
         throw invalid_argument("Argumento invalido.");
     }
-    else if(validade[POSICAO_SEPARADOR] != '/'){
+
+    // Lança exceção se não houver um separador '/' na data de validade
+    else if(dataDeValidade[POSICAO_SEPARADOR] != '/'){
         throw invalid_argument("Argumento invalido.");
     }
     else{
-        verificadorMes = atoi(mes);
-        verificadorAno = atoi(ano);
-        if(verificadorMes < MES_MINIMO || verificadorMes > MES_MAXIMO ||
-           verificadorAno < ANO_MINIMO || verificadorAno > ANO_MAXIMO){
+        //Tem problema deixar com a função atoi() mesmo?
+        // Lança exceção se o valor do mês ou do ano estiver fora do intervalo definido com válido
+        if(atoi(mes) < MES_MINIMO || atoi(mes) > MES_MAXIMO ||
+           atoi(ano) < ANO_MINIMO || atoi(ano) > ANO_MAXIMO){
             throw invalid_argument("Argumento invalido.");
         }
     }
 }
 
-void DataDeValidade::setDataDeValidade(string validade) throw (invalid_argument){
-    validar(validade);
-    this->validade = validade;
+void DataDeValidade::setDataDeValidade(string dataDeValidade) throw (invalid_argument){
+    validar(dataDeValidade);
+    this->dataDeValidade = dataDeValidade;
+}
+
+int Estado::verificaEstado(string sigla, string *listaEstados){
+    int verificador = INVALIDO;
+    for(int i = 0; i < listaEstados->size(); ++i){
+        cout << i << "/" << listaEstados[i] << endl;
+        if( sigla == listaEstados[i]){
+            cout << "encontrei" << endl;
+            verificador = VALIDO;
+            break;
+        }
+    }
+
+    return verificador;
 }
 
 void Estado::validar(string sigla) throw (invalid_argument){
 	int i;
     int verificadorTamanho;
-    int isEstado = 0;
-	string vetor[27] = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS","MG", 
-						 "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
+    int verificadorEstado = INVALIDO;
+	string listaEstados[QUANTIDADE_ESTADOS] = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS",
+                              "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
     
-	//Lança exceção se as siglas não corresponderem com as designadas e se seus tamanhos forem maiores que
-	//o limite estabelecido
-
+    cout << "Criei estados == " << listaEstados->size() << endl;
     verificadorTamanho = sigla.size();
+    verificadorEstado = verificaEstado(sigla, &listaEstados[0]);
+    //Lança exceção se a sigla não tiver tamanho esperado
 
     if(verificadorTamanho != TAMANHO_PADRAO_UF){
+        cout << "tamanho" << endl;
         throw invalid_argument("Argumento invalido.");
     }
     else{
+
+        //Lança exceção se a sigla não for encontrada no setor de siglas
         for(i = 0; i < TAMANHO_PADRAO_UF; ++i){
             if(!isalpha(sigla[i])){
+                cout << "Não e letra" << endl;
                 throw invalid_argument("Argumento invalido.");
             }
             else{
                 sigla[i] = toupper(sigla[i]);
             }
         }
-        
-        for(i = 0; i < TAMANHO_VETOR; ++i){
-            if(sigla.compare(vetor[i]) == 0){
-                isEstado = 1;
-                break;
-            }
-        }
-
-        if(!isEstado){
+        cout << "verifica invalid" << endl;
+         if(verificadorEstado != VALIDO){
+            cout << "Invalid" << endl;
             throw invalid_argument("Argumento invalido.");
         }
     }
@@ -320,11 +334,15 @@ void Nome::validar(string nome) throw (invalid_argument){
             if(!isalpha(nome[i]) && nome[i] != ' ' && nome[i] != '.'){
                 throw invalid_argument("Argumento invalido.");
             }
-            //verificação de adjacência
+
+            //verifica a característica do caracter adjacente a algum outro
             if(i > 0){
-                if(nome[i] == '.' && !isalpha(nome[i-1])){//ponto precedido por letra
+                //verifica se é um ponto que não é precedido por letra
+                if(nome[i] == '.' && !isalpha(nome[i-1])){
                     throw invalid_argument("Argumento invalido.");
                 }
+
+                //verifica se é um espaço em branco seguido de outro espaço em branco
                 if(nome[i-1] == ' ' && nome[i] == ' '){
                     throw invalid_argument("Argumento invalido.");
                 }
