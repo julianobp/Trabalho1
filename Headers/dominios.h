@@ -31,6 +31,7 @@ class Banco {
 private:
 	string banco;
 	const static int TAMANHO = 3;
+	
 	//Método responsável por validação
 
 	void validar(string) throw (invalid_argument);
@@ -97,19 +98,25 @@ private:
 	const static int TAMANHO_PADRAO_DIA = 2;
 	const static int TAMANHO_PADRAO_MES = 3;
 	const static int TAMANHO_PADRAO_ANO = 4;
+
 	const static int POSICAO_DIA = 0;
-	const static int POSICAO_SEPARADOR_DIA_MES = 2;
-	const static int POSICAO_SEPARADOR_MES_ANO = 6;
+	const static int POSICAO_SEPARADOR_DIA_MES = TAMANHO_PADRAO_DIA;
+	const static int POSICAO_SEPARADOR_MES_ANO = POSICAO_SEPARADOR_DIA_MES + TAMANHO_PADRAO_MES + 1;
+
 	const static int DIA_MINIMO = 1;
 	const static int DIA_MAXIMO = 31;
 	const static int NUMERO_MESES = 12;
 	const static int ANO_MINIMO = 2000;
 	const static int ANO_MAXIMO = 2099;
+	const static int FEVEREIRO_NAO_BISSEXTO = 28;
 
+	const static int VALIDO = 1;
+	const static int INVALIDO = 0;
+	
 	//Métodos auxiliares de validação
 
-	bool verificaMes(string nomeMes, string *meses);
-	bool verificaBissexto(int) throw (invalid_argument);
+	int verificaMes(string nomeMes, string *meses);
+	int verificaBissexto(int) throw (invalid_argument);
 	
 	//Método responsável por validação
 
@@ -129,20 +136,21 @@ public:
 
 class DataDeValidade {
 private:
-	string validade;
+	string dataDeValidade;
 	const static int TAMANHO = 5;
 	const static int TAMANHO_PADRAO_MES = 2;
-	const static int TAMANHO_PADRAO_ANO = 2;
 	const static int POSICAO_INICIAL_MES = 0;
-	const static int POSICAO_FINAL_MES = 1;//Pq 2?
+	const static int POSICAO_FINAL_MES = 2;
+	const static int POSICAO_SEPARADOR = 2;
+	const static int TAMANHO_PADRAO_ANO = 2;
 	const static int POSICAO_INICIAL_ANO = 3;
 	const static int POSICAO_FINAL_ANO = 4;
-	const static int POSICAO_SEPARADOR = 2;
 
 	const static int MES_MINIMO = 1;
 	const static int MES_MAXIMO = 12;
 	const static int ANO_MINIMO = 0;
 	const static int ANO_MAXIMO = 99;
+	
 	//Método responsável por validação
 
 	void validar(string) throw (invalid_argument);
@@ -154,7 +162,7 @@ public:
 	void setDataDeValidade(string) throw (invalid_argument);
 
     string getDataDeValidade() const {
-        return validade;
+        return dataDeValidade;
     }
 	
 };
@@ -163,10 +171,13 @@ class Estado {
 private:
 	string sigla;
 	const static int TAMANHO_PADRAO_UF = 2;
-	const static int TAMANHO_VETOR = 27;
+	const static int QUANTIDADE_ESTADOS = 27;
 
+	const static int VALIDO = 1;
+	const static int INVALIDO = 0;
 	//Método responsável por validação
 
+	int verificaEstado(string, string*);
 	void validar(string) throw (invalid_argument);
 
 public:
@@ -186,6 +197,7 @@ class Identificador {
 private:
 	string identificador;
 	const static int TAMANHO = 5;
+	
 	//Método responsável por validação
 
 	void validar(string) throw (invalid_argument);
@@ -207,6 +219,7 @@ class Nome {
 private:
 	string nome;
 	const static int TAMANHO_MAXIMO = 15;
+	
 	//Método responsável por validação
 
 	void validar(string) throw (invalid_argument);
@@ -228,6 +241,7 @@ class NumeroDeCartaoDeCredito {
 private:
 	string numCartaoDeCredito;
 	const static int TAMANHO = 16;
+	
 	//Método responsável por validação
 
 	void validar(string) throw (invalid_argument);
@@ -271,7 +285,9 @@ private:
 	const static int TAMANHO = 8;
 	const static int TAMANHO_SIMBOLOS = 5;
 	const static int QUANTIDADE_CARACTERES = 256;
+	
 	//Método responsável por validação
+
 	bool verificaCaracteresObrigatorios(string senha) throw (invalid_argument);
 	bool verificaRepeticao(string senha) throw (invalid_argument);
 	void validar(string) throw (invalid_argument);
