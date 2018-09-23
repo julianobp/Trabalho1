@@ -308,4 +308,5 @@ public:
     }
 
 };
+
 #endif // DOMINIOS_H_INCLUDED
