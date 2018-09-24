@@ -115,7 +115,7 @@ private:
 	
 	//Métodos auxiliares de validação
 
-	int verificaMes(string nomeMes, string *meses);
+	int verificaMes(string, string * );
 	int verificaBissexto(int) throw (invalid_argument);
 	
 	//Método responsável por validação
@@ -177,7 +177,7 @@ private:
 	const static int INVALIDO = 0;
 	//Método responsável por validação
 
-	int verificaEstado(string, string*);
+	int verificaEstado(string, string* );
 	void validar(string) throw (invalid_argument);
 
 public:
@@ -242,10 +242,14 @@ private:
 	string numCartaoDeCredito;
 	const static int TAMANHO = 16;
 	
+	const static int VALIDO = 1;
+	const static int INVALIDO = 0;
 	//Método responsável por validação
 
+	int checkLuhn(string) throw (invalid_argument);
+	int verificaExisteSomenteDigito(string) throw (invalid_argument);
 	void validar(string) throw (invalid_argument);
-	bool checkLuhn(string) throw (invalid_argument);
+	
 public:
 
 	//Métodos de acesso
@@ -263,8 +267,11 @@ private:
 	string contaCorrente;
 	const static int TAMANHO_MAXIMO = 6;
 
+	const static int VALIDO = 1;
+	const static int INVALIDO = 0;
 	//Método responsável por validação
 
+	int verificaExisteSomenteDigito(string) throw (invalid_argument);
 	void validar(string) throw (invalid_argument);
 
 public:
@@ -283,13 +290,16 @@ class Senha {
 private:
 	string senha;
 	const static int TAMANHO = 8;
-	const static int TAMANHO_SIMBOLOS = 5;
+	const static int QUANTIDADE_SIMBOLOS_PERMITIDOS = 5;
 	const static int QUANTIDADE_CARACTERES = 256;
 	
+	const static int VALIDO = 1;
+	const static int INVALIDO = 0;
 	//Método responsável por validação
 
-	bool verificaCaracteresObrigatorios(string senha) throw (invalid_argument);
-	bool verificaRepeticao(string senha) throw (invalid_argument);
+	int verificaSimbolo(string, string* ) throw (invalid_argument);
+	int verificaCaracteresObrigatorios(string, string* ) throw (invalid_argument);
+	int verificaRepeticao(string) throw (invalid_argument);
 	void validar(string) throw (invalid_argument);
 
 public:
@@ -307,10 +317,13 @@ public:
 class TipoDeAcomodacao {
 private:
 	string acomodacao;
-	const static int TAMANHO_VETOR = 3; 
+	const static int QUANTIDADE_TIPOS_ACOMODACAO = 3;
 
+	const static int VALIDO = 1;
+	const static int INVALIDO = 0;
 	//Método responsável por validação
 
+	int verificaAcomodacao(string, string* );
 	void validar(string) throw (invalid_argument);
 
 public:

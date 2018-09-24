@@ -25,6 +25,7 @@ void Agencia::validar(string agencia) throw (invalid_argument){
 	else{  
         
         // Testa a validade de cada digito
+
 		for (i = 0; i < TAMANHO; ++i){
 			if(!isdigit(agencia[i])){
 				throw invalid_argument("Argumento invalido.");
@@ -109,11 +110,13 @@ int Data::verificaBissexto(int ano) throw (invalid_argument){
     
     // Se o ano for múltiplo de 100 e não for múltiplo de 400 ou
     // ano não for múltiplo de 4, então NÃO É bissexto
+
     if((ano % 100 == 0) && (ano % 400 != 0) || (ano % 4 != 0)){
         return INVALIDO;
     }
     
     // Do contrário, o ano certamente É bissexto.
+
     else{
         return VALIDO;
     }
@@ -142,6 +145,7 @@ void Data::validar(string data) throw (invalid_argument){
     nomeMes = mes;
 
     //Converte os caracteres, se do tipo letra, da string nomeMes para caixa baixa
+
     for(i = 0; nomeMes[i] != '\0'; ++i){
         if(isalpha(nomeMes[i])){
             nomeMes[i] = tolower(nomeMes[i]);
@@ -151,29 +155,34 @@ void Data::validar(string data) throw (invalid_argument){
     verificadorMes = verificaMes(nomeMes, &meses[0]);
     
     // Lança exceção se o tamanho da string agencia for diferente do tamanho esperado
+
     if( (verificadorTamanho != TAMANHO) ){
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se não for encontrado os caracteres separadores dos campos da data
     // na posiçãoe esperada, violando o formato
+
     else if( data[POSICAO_SEPARADOR_DIA_MES] != '/' &&
              data[POSICAO_SEPARADOR_MES_ANO] != '/'){
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se o dia estiver fora do intervalo definido com válido
+    
     else if(atoi(dia) < DIA_MINIMO || atoi(dia) > DIA_MAXIMO){
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se o ano estiver fora do intervalo definido como válido
+
     else if(atoi(ano) < ANO_MINIMO || atoi(ano) > ANO_MAXIMO){
         throw invalid_argument("Argumento invalido.");
     }
     else{
 
         // Lança exceção se houver caracteres que não são letra na string nomeMes
+
         for(i = 0; nomeMes[i] != '\0'; ++i){
             if(!isalpha(nomeMes[i])){
                 throw invalid_argument("Argumento invalido.");
@@ -184,6 +193,7 @@ void Data::validar(string data) throw (invalid_argument){
         // ou se o dia não existir para o mês dada
         // ou se, para dado ano bissexto e para o mês de ferevereiro, o dia for maior que
         // o limite dado ao mês de fereiro em ano não bissexto
+
         if(verificadorMes == INVALIDO){
             throw invalid_argument("Argumento invalido.");
         }
@@ -213,17 +223,20 @@ void DataDeValidade::validar(string dataDeValidade) throw (invalid_argument){
     dataDeValidade.copy(ano,POSICAO_FINAL_ANO,POSICAO_INICIAL_ANO);
 
     // Lança exceção se o tamanho da string dataDeValidade for diferente do tamanho esperado
+
     if(verificadorTamanho != TAMANHO){
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se não houver um separador '/' na data de validade
+
     else if(dataDeValidade[POSICAO_SEPARADOR] != '/'){
         throw invalid_argument("Argumento invalido.");
     }
     else{
-        //Tem problema deixar com a função atoi() mesmo?
+
         // Lança exceção se o valor do mês ou do ano estiver fora do intervalo definido com válido
+
         if(atoi(mes) < MES_MINIMO || atoi(mes) > MES_MAXIMO ||
            atoi(ano) < ANO_MINIMO || atoi(ano) > ANO_MAXIMO){
             throw invalid_argument("Argumento invalido.");
@@ -258,6 +271,7 @@ void Estado::validar(string sigla) throw (invalid_argument){
     verificadorTamanho = sigla.size();
 
     //Converte os caracteres, se do tipo letra, da string sigla para caixa alta
+
     for(i = 0; sigla[i] != '\0'; ++i){
         if(isalpha(sigla[i])){
             sigla[i] = toupper(sigla[i]);
@@ -267,12 +281,14 @@ void Estado::validar(string sigla) throw (invalid_argument){
     verificadorEstado = verificaEstado(sigla, &listaEstados[0]);
     
     //Lança exceção se a sigla não tiver tamanho esperado
+
     if(verificadorTamanho != TAMANHO_PADRAO_UF){
         throw invalid_argument("Argumento invalido.");
     }
     else{
 
         //Lança exceção se houver algum caracter que não seja uma letra
+
         for(i = 0; sigla[i] != '\0'; ++i){
             if(!isalpha(sigla[i])){
                 throw invalid_argument("Argumento invalido.");
@@ -280,6 +296,7 @@ void Estado::validar(string sigla) throw (invalid_argument){
         }
 
         // Lança exceção se a sigla não corresponder a um estado válido
+
         if(verificadorEstado != VALIDO){
             throw invalid_argument("Argumento invalido.");
         }
@@ -299,12 +316,14 @@ void Identificador::validar(string identificador) throw (invalid_argument){
     verificadorTamanho = identificador.size();
 
     // Lança exceção se o tamanho da string identificador for diferente do tamanho esperado
+
     if (verificadorTamanho != TAMANHO){
         throw invalid_argument("Argumento invalido.");
     }
     else{
 
         // Lança exceção se algum caracter da string identificador não for uma letra minúscula
+
         for (i=0; identificador[i] != '\0'; ++i){
             if(!islower(identificador[i])){
                 throw invalid_argument("Argumento invalido.");
@@ -325,32 +344,40 @@ void Nome::validar(string nome) throw (invalid_argument){
     verificadorTamanho = nome.size();
 
     // Lança exceção se o tamanho da string nome for maior que o tamanho máximo
+
     if(verificadorTamanho > TAMANHO_MAXIMO){
         throw invalid_argument("Argumento invalido.");
     }
     else{
+
         // Lança exceção se o primeiro caracter do nome for um ponto '.', pois assim
         // não seria possível que ele fosse precedido por uma letra
+
         if(nome[0] == '.'){
             throw invalid_argument("Argumento invalido.");
         }
 
         for(i = 0; i < verificadorTamanho; ++i){
+
             // Faz uma verificação sequencial, ou seja, caracter a caracter
             // Lança exceção se dado caracter não for letra, não for espaço em branco e não for ponto
+
             if(!isalpha(nome[i]) && nome[i] != ' ' && nome[i] != '.'){
                 throw invalid_argument("Argumento invalido.");
             }
 
             // Faz uma verificação de adjacência, ou seja, analisa um caracter e o seu vizinho anterior
+
             if(i > 0){
 
                 // Lança exceção se sendo um dado caracter um ponto, seu vizinho não for uma letra
+
                 if(nome[i] == '.' && !isalpha(nome[i-1])){
                     throw invalid_argument("Argumento invalido.");
                 }
 
                 // Lança exceção se uma caracter que é um espaço em branco for precedido por outro espaço em branco
+                
                 if(nome[i] == ' ' && nome[i-1] == ' '){
                     throw invalid_argument("Argumento invalido.");
                 }
@@ -364,7 +391,7 @@ void Nome::setNome(string nome) throw (invalid_argument){
     this->nome = nome;
 }
 
-bool NumeroDeCartaoDeCredito::checkLuhn(string numCartaoDeCredito) throw (invalid_argument){
+int NumeroDeCartaoDeCredito::checkLuhn(string numCartaoDeCredito) throw (invalid_argument){
     int somatorio = 0;
     int numeroDigitos = numCartaoDeCredito.size();
     int numeroParidade = (numeroDigitos - 1) % 2;
@@ -378,22 +405,30 @@ bool NumeroDeCartaoDeCredito::checkLuhn(string numCartaoDeCredito) throw (invali
 
         // Se número de paridade = 1, então dobra o valor extraído do dígito nas posições ímpares da string do número de cartão
         // Se número de paridade = 0, então dobra o valor extraído do dígito nas posições pares da string do número de cartão
+
         if ( numeroParidade == (i % 2)){
             digito = digito * 2;
         }
 
         // Adiciona ao somatório a soma de todos os dígitos do valor da v;ariávle digito
         // Exemplo: se digito igual a 14 (caso em que o valor original (dígito 7) foi dobrado), adiciona-se ao somatório 1 + 4
-        somatorio += digito/10;
-        somatorio += digito%10;
+
+        somatorio += digito / 10;
+        somatorio += digito % 10;
     }
 
-    // Retorna 1 se o valor do somatório for divisível por 10, confirmando que o número do cartão é válido
-    // Retorna 0, do contrário
-    return 0 == somatorio % 10;
+    // Retorna VALIDO se o valor do somatório for divisível por 10, confirmando que o número do cartão é válido
+    // Retorna INVALIDO, do contrário
+
+    if(somatorio % 10 == 0){
+        return VALIDO;
+    }
+    else{
+        return INVALIDO;
+    }
 }
 
-bool NumeroDeCartaoDeCredito::verificaExisteSomenteDigito(string contaCorrente) throw (invalid_argument){
+int NumeroDeCartaoDeCredito::verificaExisteSomenteDigito(string contaCorrente) throw (invalid_argument){
     for (int i = 0; numCartaoDeCredito[i] != '\0'; ++i){
         if( !isdigit(numCartaoDeCredito[i]) ){
             return INVALIDO;
@@ -413,16 +448,19 @@ void NumeroDeCartaoDeCredito::validar(string numCartaoDeCredito) throw (invalid_
         
 
     // Lança exceção se o tamanho do string numCartaoDeCredito for diferente do tamanho esperado
+
     if(verificadorTamanho != TAMANHO){
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se houver algum caracter não numérico
+
     else if( !existeSomenteDigito ){
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se o algoritmo de Luhn não checar que o número é válido
+
     else if( !checkLuhn(numCartaoDeCredito)){
         throw invalid_argument("Argumento invalido.");
     }
@@ -433,7 +471,7 @@ void NumeroDeCartaoDeCredito::setNumeroDeCartaoDeCredito (string numCartaoDeCred
     this->numCartaoDeCredito = numCartaoDeCredito;
 }
 
-bool NumeroDeContaCorrente::verificaExisteSomenteDigito(string contaCorrente) throw (invalid_argument){
+int NumeroDeContaCorrente::verificaExisteSomenteDigito(string contaCorrente) throw (invalid_argument){
     for (int i = 0; contaCorrente[i] != '\0'; ++i){
         if( !isdigit(contaCorrente[i]) ){
             return INVALIDO;
@@ -459,6 +497,7 @@ void NumeroDeContaCorrente::validar(string contaCorrente) throw (invalid_argumen
     }
     
     // Lança exceção se houver algum caracter não numérico
+
     else if( !existeSomenteDigito ){  
         throw invalid_argument("Argumento invalido.");    
     }
@@ -485,8 +524,7 @@ int Senha::verificaSimbolo(string senha, string* simbolos) throw (invalid_argume
     return verificador;
 }
 
-bool Senha::verificaCaracteresObrigatorios(string senha, string* simbolosObrigatorios) throw (invalid_argument){
-    //Verificar se pode deixar esses 0 e 1 aqui ???
+int Senha::verificaCaracteresObrigatorios(string senha, string* simbolosObrigatorios) throw (invalid_argument){
     bool existeDigito = INVALIDO;
     bool existeLetraMaiuscula = INVALIDO;
     bool existeLetraMinuscula = INVALIDO;
@@ -521,31 +559,36 @@ bool Senha::verificaCaracteresObrigatorios(string senha, string* simbolosObrigat
     return INVALIDO;
 }
 
-bool Senha::verificaRepeticao(string senha) throw (invalid_argument){
+int Senha::verificaRepeticao(string senha) throw (invalid_argument){
     int i;
     char extratorCaracter;
     bool caracteres[QUANTIDADE_CARACTERES];
+    
+    const static int OCORREU = 1;
+    const static int SEM_MULTIPLAS_OCORRENCIAS = 0; 
 
     // Inicializa o vetor booleano que guarda a informação da ocorrência (1) ou não ocorrência (0) de algum caracter
     // da string senha em uma posição que correponde ao número ASCII do dado caracter
+
     for (i = 0; i < QUANTIDADE_CARACTERES; ++i){
         caracteres[i] = 0;
     }
 
     for (i = 0; senha[i] != '\0'; i++){
+
         // Se o caracter já tiver ocorrido, retorna 1 confirmando uma repetição, pois o loop só
         // visita uma posição no vetor caracteres quando há uma ocorrência.
         // Se ainda não houve ocorrência na posição dada, marca que ela passa a ter ocorrido.
 
-        if(caracteres[int(senha[i])] == 1){
+        if(caracteres[int(senha[i])] == OCORREU){
             return 1;
         }
         else{
-            caracteres[int(senha[i])] = 1;
+            caracteres[int(senha[i])] = OCORREU;
         }
     }
 
-    return 0;
+    return SEM_MULTIPLAS_OCORRENCIAS;
 }
 
 void Senha::validar(string senha) throw (invalid_argument){
@@ -563,22 +606,26 @@ void Senha::validar(string senha) throw (invalid_argument){
     verificadorRepeticao = verificaRepeticao(senha);
     
     // Lança exceção se o tamanho da string senha for diferente do tamanho esperado
+
     if (verificadorTamanho != TAMANHO){
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se faltar algum caracter de algum tipo (letra, dígito e simbolo permitido)
+
     else if( verificadorCaracteresObrigatorios == INVALIDO){
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se houver repetição de caracteres
+
     else if( verificadorRepeticao == VALIDO){
         throw invalid_argument("Argumento invalido.");
     }
     else {
 
         // Lança exceção se algum caracter não for nem letra, nem dígito e nem um simbolo válido
+
         for (i = 0; senha[i] != '\0'; ++i){
             if(!isalnum(senha[i]) && verificadorSimbolo == INVALIDO){
                 throw invalid_argument("Argumento invalido.");
@@ -611,6 +658,7 @@ void TipoDeAcomodacao::validar(string acomodacao) throw (invalid_argument){
     string acomodacoes[QUANTIDADE_TIPOS_ACOMODACAO] = {"apartamento", "casa", "flat"};
 
     //Converte os caracteres, se do tipo letra, da string acomodacao para caixa baixa
+    
     for(i = 0; acomodacao[i] != '\0'; ++i){
         if(isalpha(acomodacao[i])){
             acomodacao[i] = tolower(acomodacao[i]);
