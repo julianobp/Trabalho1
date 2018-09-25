@@ -225,15 +225,13 @@ private:
 	//Métodos auxiliares de validação
 
 	/**
-	 *@brief Método responsável por...
-	 *@param
+	 *@brief Método responsável por verificar se o mês fornecido está de acordo com os padrões definidos.
 	 */
 
 	int verificaMes(string, string * );
 
 	/**
-	 *@brief Método responsável por...
-	 *@param
+	 *@brief Método responsável por verificar se o ano fornecido é ou não bissexto.
 	 */
 
 	int verificaBissexto(int) throw (invalid_argument);
@@ -346,8 +344,7 @@ private:
 	//Método auxiliar da função validação
 
 	/*
-	 *@brief Método responsável por ...
-	 *@param
+	 *@brief Método responsável por verificar se a sigla fornecida corresponde a uma das siglas definidas.
 	 */
 
 	int verificaEstado(string, string* );
@@ -495,15 +492,14 @@ private:
 	//Métodos auxiliares da validação
 
 	/*
-	 *@brief Método responsável por ...
-	 *@param
+	 *@brief Método responsável por verificar se o número sw cartão de crédito está de acordo
+	 * com o algoritmo de Luhn.
 	 */
 
 	int checkLuhn(string) throw (invalid_argument);
 
 	/*
-	 *@brief Método responsável por ...
-	 *@param
+	 *@brief Método responsável por verificar se todos os caracteres fornecidos são dígitos.
 	 */
 
 	int verificaExisteSomenteDigito(string) throw (invalid_argument);
@@ -558,8 +554,7 @@ private:
 	//Método auxiliar da validação
 
 	/*
-	 *@brief Método responsável por ...
-	 *@param
+	 *@brief Método responsável por verificar se todos os caracteres fornecidos são dígitos.
 	 */
 
 	int verificaExisteSomenteDigito(string) throw (invalid_argument);
@@ -619,22 +614,19 @@ private:
 	//Métodos auxiliares da validação
 
 	/*
-	 *@brief Método responsável por ...
-	 *@param
+	 *@brief Método responsável por verificar se os símbolos fornecidos estão de acordo com os estabelecidos.
 	 */
 
 	int verificaSimbolo(string, string* ) throw (invalid_argument);
 
 	/*
-	 *@brief Método responsável por ...
-	 *@param
+	 *@brief Método responsável por verificar se os caracteres fornecidos estão de acordo com o padrão definido.
 	 */
 
 	int verificaCaracteresObrigatorios(string, string* ) throw (invalid_argument);
 
 	/*
-	 *@brief Método responsável por ...
-	 *@param
+	 *@brief Método responsável por verificar se há caracteres repetidos.
 	 */
 
 	int verificaRepeticao(string) throw (invalid_argument);
@@ -689,8 +681,7 @@ private:
 	//Método auxiliar da validação
 
 	/*
-	 *@brief Método responsável por ...
-	 *@param
+	 *@brief Método responsável por verificar se a acomodação fornecida se refere a uma das estabelecidas.
 	 */
 
 	int verificaAcomodacao(string, string* );
