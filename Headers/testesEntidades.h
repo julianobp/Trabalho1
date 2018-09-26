@@ -1,3 +1,13 @@
+/**
+ *@file testesEntidades.h
+ *@version 1.0
+ *@date 24/09/2018 
+ *@author Ayllah Ahmad Lopes e Juliano Balcante Pereira
+ *@title Classes de testes de unidade das classes de entidade
+ *@brief Arquivo com a descrição das classes de testes de unidade das classes de entidade 
+        (classes que verificarão o lançamento de exceções nas classes de entidade).
+ */
+
 #ifndef TESTESENTIDADES_H_INCLUDED
 #define TESTESENTIDADES_H_INCLUDED
 
@@ -6,6 +16,10 @@
 #include <string>
 
 using namespace std;
+
+/**
+ *@brief Classe responsável por testar a classe Usuário, a fim de verificar o lançamento de exceções.
+ */
 
 class TUUsuario {
 private:
@@ -35,6 +49,10 @@ public:
     int run();
 
 };
+
+/**
+ *@brief Classe responsável por testar a classe Acomodacao, a fim de verificar o lançamento de exceções.
+ */
 
 class TUAcomodacao {
 private:
@@ -71,6 +89,10 @@ public:
 
 };
 
+/**
+ *@brief Classe responsável por testar a classe CartaoDeCredito, a fim de verificar o lançamento de exceções.
+ */
+
 class TUCartaoDeCredito {
 private:
     const string VALOR_VALIDO_CARTAO = "5223367278781011";
@@ -99,6 +121,10 @@ public:
     int run();
 
 };
+
+/**
+ *@brief Classe responsável por testar a classe ContaCorrente, a fim de verificar o lançamento de exceções.
+ */
 
 class TUContaCorrente {
 private:

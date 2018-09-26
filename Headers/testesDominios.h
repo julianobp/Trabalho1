@@ -1,3 +1,13 @@
+/**
+ *@file testesDominios.h
+ *@version 1.0
+ *@date 24/09/2018 
+ *@author Ayllah Ahmad Lopes e Juliano Balcante Pereira
+ *@title Classes de testes de unidade das classes de dominio
+ *@brief Arquivo com a descrição das classes de testes de unidade das classes de dominio 
+        (classes que verificarão o lançamento de exceções nas classes de dominio).
+ */
+
 #ifndef TESTESDOMINIOS_H_INCLUDED
 #define TESTESDOMINIOS_H_INCLUDED
 
@@ -6,6 +16,10 @@
 #include <string>
 
 using namespace std;
+
+/**
+ *@brief Classe responsável por testar a classe Agencia, a fim de verificar o lançamento de exceções.
+ */
 
 class TUAgencia {
 private:
@@ -38,6 +52,10 @@ public:
 
 };
 
+/**
+ *@brief Classe responsável por testar a classe Banco, a fim de verificar o lançamento de exceções.
+ */
+
 class TUBanco {
 private:
     const string VALOR_VALIDO = "019";
@@ -67,6 +85,10 @@ public:
     int run();
 
 };
+
+/**
+ *@brief Classe responsável por testar a classe CapacidadeDeAcomodacao, a fim de verificar o lançamento de exceções.
+ */
 
 class TUCapacidadeDeAcomodacao {
 private:
@@ -99,6 +121,10 @@ public:
 
 };
 
+/**
+ *@brief Classe responsável por testar a classe Diaria, a fim de verificar o lançamento de exceções.
+ */
+
 class TUDiaria {
 private:
 	const double VALOR_VALIDO   = 500.50;
@@ -129,6 +155,10 @@ public:
     int run();
 
 };
+
+/**
+ *@brief Classe responsável por testar a classe Data, a fim de verificar o lançamento de exceções.
+ */
 
 class TUData {
 private:
@@ -161,6 +191,10 @@ public:
 
 };
 
+/**
+ *@brief Classe responsável por testar a classe DataDeValidade, a fim de verificar o lançamento de exceções.
+ */
+
 class TUDataDeValidade {
 private:
 	const string VALOR_VALIDO   = "03/23";
@@ -191,6 +225,10 @@ public:
     int run();
 
 };
+
+/**
+ *@brief Classe responsável por testar a classe Estado, a fim de verificar o lançamento de exceções.
+ */
 
 class TUEstado {
 private:
@@ -223,6 +261,10 @@ public:
 
 };
 
+/**
+ *@brief Classe responsável por testar a classe Identificador, a fim de verificar o lançamento de exceções.
+ */
+
 class TUIdentificador{
 private:
     const string VALOR_VALIDO = "pedro";
@@ -251,6 +293,10 @@ public:
 
     int run();
 };
+
+/**
+ *@brief Classe responsável por testar a classe Nome, a fim de verificar o lançamento de exceções.
+ */
 
 class TUNome{
 private:
@@ -281,6 +327,10 @@ public:
     int run();
 };
 
+/**
+ *@brief Classe responsável por testar a classe NumeroDeCartaoDeCredito, a fim de verificar o lançamento de exceções.
+ */
+
 class TUNumeroDeCartaoDeCredito{
 private:
     const string VALOR_VALIDO = "5223367278781011";
@@ -309,6 +359,10 @@ public:
 
     int run();
 };
+
+/**
+ *@brief Classe responsável por testar a classe NumeroDeContaCorrente, a fim de verificar o lançamento de exceções.
+ */
 
 class TUNumeroDeContaCorrente {
 private:
@@ -341,6 +395,10 @@ public:
 
 };
 
+/**
+ *@brief Classe responsável por testar a classe Senha, a fim de verificar o lançamento de exceções.
+ */
+
 class TUSenha {
 private:
     const string VALOR_VALIDO = "1a3A567$";
@@ -371,6 +429,10 @@ public:
     int run();
 
 };
+
+/**
+ *@brief Classe responsável por testar a classe TipoDeAcomodacao, a fim de verificar o lançamento de exceções.
+ */
 
 class TUTipoDeAcomodacao {
 private:
