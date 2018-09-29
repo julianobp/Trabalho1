@@ -6,12 +6,14 @@
 #include <cstdlib>
 #include <locale>
 
+#include <iostream>
+
 using namespace std;
 
 void Agencia::validar(string agencia) throw (invalid_argument){
 	int verificadorTamanho;
 	int i;
-	
+
     verificadorTamanho = agencia.size();
 
     // Lança exceção se o tamanho da string agencia for diferente do tamanho esperado
@@ -20,8 +22,8 @@ void Agencia::validar(string agencia) throw (invalid_argument){
 	if(verificadorTamanho != TAMANHO){
 		throw invalid_argument("Argumento invalido.");
 	}
-	else{  
-        
+	else{
+
         // Testa a validade de cada digito
 
 		for (i = 0; i < TAMANHO; ++i){
@@ -54,7 +56,7 @@ void Banco::validar(string banco) throw (invalid_argument){
 			if( !isdigit(banco[i]) ){
 				throw invalid_argument("Argumento invalido.");
             }
-        }    
+        }
     }
 }
 
@@ -105,14 +107,14 @@ int Data::verificaMes(string nomeMes, string *meses){
 }
 
 int Data::verificaBissexto(int ano) throw (invalid_argument){
-    
+
     // Se o ano for múltiplo de 100 e não for múltiplo de 400 ou
     // ano não for múltiplo de 4, então NÃO É bissexto
 
     if((ano % 100 == 0) && (ano % 400 != 0) || (ano % 4 != 0)){
         return INVALIDO;
     }
-    
+
     // Do contrário, o ano certamente É bissexto.
 
     else{
@@ -121,15 +123,15 @@ int Data::verificaBissexto(int ano) throw (invalid_argument){
 }
 
 void Data::validar(string data) throw (invalid_argument){
+    string::size_type sz;
     int verificadorTamanho;
     int verificadorMes;
     int i;
-    char dia[TAMANHO_PADRAO_DIA];
-    char mes[TAMANHO_PADRAO_MES];
+    int dia;
     char ano[TAMANHO_PADRAO_ANO];
-    string nomeMes;
+    string mes;
     verificadorTamanho = data.size();
-    
+
     string meses[NUMERO_MESES] = {"jan", "fev", "mar", "abr",
                                   "mai", "jun", "jul", "ago",
                                   "set", "out", "nov", "dez"};
@@ -137,21 +139,22 @@ void Data::validar(string data) throw (invalid_argument){
                                          31, 30, 31, 31,
                                          30, 31, 30, 31};
 
-    data.copy(dia, TAMANHO_PADRAO_DIA, POSICAO_DIA);
-    data.copy(mes, TAMANHO_PADRAO_MES, POSICAO_SEPARADOR_DIA_MES + 1);
-    data.copy(ano, TAMANHO_PADRAO_ANO, POSICAO_SEPARADOR_MES_ANO + 1); 
-    nomeMes = mes;
+
+    dia = stoi(data, 0);
+    memcpy(ano,&data[7],4);
+    ano[4] = '\0';
+    mes = data.substr(3,3);
 
     //Converte os caracteres, se do tipo letra, da string nomeMes para caixa baixa
 
-    for(i = 0; nomeMes[i] != '\0'; ++i){
-        if(isalpha(nomeMes[i])){
-            nomeMes[i] = tolower(nomeMes[i]);
+    for(i = 0; mes[i] != '\0'; ++i){
+        if(isalpha(mes[i])){
+            mes[i] = tolower(mes[i]);
         }
     }
 
-    verificadorMes = verificaMes(nomeMes, &meses[0]);
-    
+    verificadorMes = verificaMes(mes, &meses[0]);
+
     // Lança exceção se o tamanho da string agencia for diferente do tamanho esperado
 
     if( (verificadorTamanho != TAMANHO) ){
@@ -167,8 +170,8 @@ void Data::validar(string data) throw (invalid_argument){
     }
 
     // Lança exceção se o dia estiver fora do intervalo definido com válido
-    
-    else if(atoi(dia) < DIA_MINIMO || atoi(dia) > DIA_MAXIMO){
+
+    else if(dia < DIA_MINIMO || dia > DIA_MAXIMO){
         throw invalid_argument("Argumento invalido.");
     }
 
@@ -181,12 +184,12 @@ void Data::validar(string data) throw (invalid_argument){
 
         // Lança exceção se houver caracteres que não são letra na string nomeMes
 
-        for(i = 0; nomeMes[i] != '\0'; ++i){
-            if(!isalpha(nomeMes[i])){
+        for(i = 0; mes[i] != '\0'; ++i){
+            if(!isalpha(mes[i])){
                 throw invalid_argument("Argumento invalido.");
             }
         }
-        
+
         // Lança exceção se o nome do mês não for encontrado no vetor de string dos meses
         // ou se o dia não existir para o mês dada
         // ou se, para dado ano bissexto e para o mês de ferevereiro, o dia for maior que
@@ -195,11 +198,11 @@ void Data::validar(string data) throw (invalid_argument){
         if(verificadorMes == INVALIDO){
             throw invalid_argument("Argumento invalido.");
         }
-        else if(atoi(dia) > numeroDiasDoMes[verificadorMes - 1]){
+        else if(dia > numeroDiasDoMes[verificadorMes - 1]){
             throw invalid_argument("Argumento invalido.");
         }
         else{
-            if((verificaBissexto(atoi(ano)) == INVALIDO)  && (nomeMes == "fev") && ( atoi(dia) > FEVEREIRO_NAO_BISSEXTO )){
+            if((verificaBissexto(atoi(ano)) == INVALIDO)  && (mes == "fev") && ( dia > FEVEREIRO_NAO_BISSEXTO )){
                 throw invalid_argument("Argumento invalido.");
             }
         }
@@ -213,12 +216,17 @@ void Data::setData(string data) throw (invalid_argument){
 
 void DataDeValidade::validar(string dataDeValidade) throw (invalid_argument){
     int verificadorTamanho;
-    int i;
-    char mes[TAMANHO_PADRAO_MES],ano[TAMANHO_PADRAO_ANO];
-
+    string mes;
+    char ano[TAMANHO_PADRAO_ANO];
+    int numMes;
     verificadorTamanho = dataDeValidade.size();
-    dataDeValidade.copy(mes,POSICAO_FINAL_MES, POSICAO_INICIAL_MES);
-    dataDeValidade.copy(ano,POSICAO_FINAL_ANO,POSICAO_INICIAL_ANO);
+
+    mes = dataDeValidade.substr(0,2);
+    mes[2] = '\0';
+    numMes = stoi(mes, 0);
+
+    memcpy(ano, &dataDeValidade[3],2);
+    ano[2] = '\0';
 
     // Lança exceção se o tamanho da string dataDeValidade for diferente do tamanho esperado
 
@@ -235,7 +243,7 @@ void DataDeValidade::validar(string dataDeValidade) throw (invalid_argument){
 
         // Lança exceção se o valor do mês ou do ano estiver fora do intervalo definido com válido
 
-        if(atoi(mes) < MES_MINIMO || atoi(mes) > MES_MAXIMO ||
+        if(numMes < MES_MINIMO || numMes > MES_MAXIMO ||
            atoi(ano) < ANO_MINIMO || atoi(ano) > ANO_MAXIMO){
             throw invalid_argument("Argumento invalido.");
         }
@@ -265,7 +273,7 @@ void Estado::validar(string sigla) throw (invalid_argument){
     int verificadorEstado = INVALIDO;
 	string listaEstados[QUANTIDADE_ESTADOS] = {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS",
                               "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"};
-    
+
     verificadorTamanho = sigla.size();
 
     //Converte os caracteres, se do tipo letra, da string sigla para caixa alta
@@ -277,7 +285,7 @@ void Estado::validar(string sigla) throw (invalid_argument){
     }
 
     verificadorEstado = verificaEstado(sigla, &listaEstados[0]);
-    
+
     //Lança exceção se a sigla não tiver tamanho esperado
 
     if(verificadorTamanho != TAMANHO_PADRAO_UF){
@@ -375,7 +383,7 @@ void Nome::validar(string nome) throw (invalid_argument){
                 }
 
                 // Lança exceção se uma caracter que é um espaço em branco for precedido por outro espaço em branco
-                
+
                 if(nome[i] == ' ' && nome[i-1] == ' '){
                     throw invalid_argument("Argumento invalido.");
                 }
@@ -439,11 +447,10 @@ int NumeroDeCartaoDeCredito::verificaExisteSomenteDigito(string contaCorrente) t
 void NumeroDeCartaoDeCredito::validar(string numCartaoDeCredito) throw (invalid_argument){
     int verificadorTamanho;
     int existeSomenteDigito;
-    int i;
 
     verificadorTamanho = numCartaoDeCredito.size();
     existeSomenteDigito = verificaExisteSomenteDigito(numCartaoDeCredito);
-        
+
 
     // Lança exceção se o tamanho do string numCartaoDeCredito for diferente do tamanho esperado
 
@@ -482,22 +489,21 @@ int NumeroDeContaCorrente::verificaExisteSomenteDigito(string contaCorrente) thr
 void NumeroDeContaCorrente::validar(string contaCorrente) throw (invalid_argument){
     int existeSomenteDigito;
     int verificadorTamanho;
-    int i;
 
     verificadorTamanho = contaCorrente.size();
     existeSomenteDigito = verificaExisteSomenteDigito(contaCorrente);
-    
+
     // Lança exceção se o tamanho da string contaCorrente for diferente do tamanho definido
     // ou se algum caracter da string apresentar valor diferente de 0-9
 
     if(verificadorTamanho != TAMANHO_MAXIMO){
         throw invalid_argument("Argumento invalido.");
     }
-    
+
     // Lança exceção se houver algum caracter não numérico
 
-    else if( !existeSomenteDigito ){  
-        throw invalid_argument("Argumento invalido.");    
+    else if( !existeSomenteDigito ){
+        throw invalid_argument("Argumento invalido.");
     }
 }
 
@@ -553,17 +559,16 @@ int Senha::verificaCaracteresObrigatorios(string senha, string* simbolosObrigato
             return VALIDO;
         }
     }
-    
+
     return INVALIDO;
 }
 
 int Senha::verificaRepeticao(string senha) throw (invalid_argument){
     int i;
-    char extratorCaracter;
     bool caracteres[QUANTIDADE_CARACTERES];
-    
+
     const static int OCORREU = 1;
-    const static int SEM_MULTIPLAS_OCORRENCIAS = 0; 
+    const static int SEM_MULTIPLAS_OCORRENCIAS = 0;
 
     // Inicializa o vetor booleano que guarda a informação da ocorrência (1) ou não ocorrência (0) de algum caracter
     // da string senha em uma posição que correponde ao número ASCII do dado caracter
@@ -594,15 +599,15 @@ void Senha::validar(string senha) throw (invalid_argument){
     int verificadorSimbolo;
     int verificadorCaracteresObrigatorios;
     int verificadorRepeticao;
-    int i, j;
-    
+    int i;
+
     string simbolos[QUANTIDADE_SIMBOLOS_PERMITIDOS] = {"!", "#", "$", "%%", "&"};
 
     verificadorTamanho = senha.size();
     verificadorSimbolo = verificaSimbolo(senha, &simbolos[0]);
     verificadorCaracteresObrigatorios = verificaCaracteresObrigatorios(senha, &simbolos[0]);
     verificadorRepeticao = verificaRepeticao(senha);
-    
+
     // Lança exceção se o tamanho da string senha for diferente do tamanho esperado
 
     if (verificadorTamanho != TAMANHO){
@@ -656,7 +661,7 @@ void TipoDeAcomodacao::validar(string acomodacao) throw (invalid_argument){
     string acomodacoes[QUANTIDADE_TIPOS_ACOMODACAO] = {"apartamento", "casa", "flat"};
 
     //Converte os caracteres, se do tipo letra, da string acomodacao para caixa baixa
-    
+
     for(i = 0; acomodacao[i] != '\0'; ++i){
         if(isalpha(acomodacao[i])){
             acomodacao[i] = tolower(acomodacao[i]);
@@ -664,12 +669,12 @@ void TipoDeAcomodacao::validar(string acomodacao) throw (invalid_argument){
     }
 
     verificadorAcomodacao = verificaAcomodacao(acomodacao, &acomodacoes[0]);
-    
-    // Lança exceção se o nome da acomodacao não for encontrado na vetor de string acomodacoes 
-    
+
+    // Lança exceção se o nome da acomodacao não for encontrado na vetor de string acomodacoes
+
     if(verificadorAcomodacao == INVALIDO){
         throw invalid_argument("Argumento invalido.");
-    }   
+    }
 }
 
 void TipoDeAcomodacao::setTipoDeAcomodacao(string acomodacao) throw (invalid_argument){

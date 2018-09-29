@@ -1,10 +1,10 @@
 /**
  *@file testesDominios.h
  *@version 1.0
- *@date 24/09/2018 
+ *@date 24/09/2018
  *@author Ayllah Ahmad Lopes e Juliano Balcante Pereira
  *@title Classes de testes de unidade das classes de dominio
- *@brief Arquivo com a descrição das classes de testes de unidade das classes de dominio 
+ *@brief Arquivo com a descrição das classes de testes de unidade das classes de dominio
         (classes que verificarão o lançamento de exceções nas classes de dominio).
  */
 
@@ -113,7 +113,7 @@ private:
 public:
 
 	// Definições de constantes para reportar resultado do teste
-    
+
     const static int SUCESSO =  0;
     const static int FALHA   = -1;
 
@@ -162,7 +162,7 @@ public:
 
 class TUData {
 private:
-	const string VALOR_VALIDO   = "29/FeV/2016";
+	const string VALOR_VALIDO   = "28/fev/2016";
     const string VALOR_INVALIDO = "29/fev/2018";
 
     // Referência para o objeto a ser testado.
