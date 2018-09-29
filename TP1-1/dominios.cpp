@@ -158,7 +158,6 @@ void Data::validar(string data) throw (invalid_argument){
     // Lança exceção se o tamanho da string agencia for diferente do tamanho esperado
 
     if( (verificadorTamanho != TAMANHO) ){
-        cout << "Tamanho invalido" << endl;
         throw invalid_argument("Argumento invalido.");
     }
 
@@ -167,21 +166,18 @@ void Data::validar(string data) throw (invalid_argument){
 
     else if( data[POSICAO_SEPARADOR_DIA_MES] != '/' &&
              data[POSICAO_SEPARADOR_MES_ANO] != '/'){
-        cout << "separadores invalido" << endl;
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se o dia estiver fora do intervalo definido com válido
 
     else if(dia < DIA_MINIMO || dia > DIA_MAXIMO){
-        cout << "dia invalido" << endl;
         throw invalid_argument("Argumento invalido.");
     }
 
     // Lança exceção se o ano estiver fora do intervalo definido como válido
 
     else if(atoi(ano) < ANO_MINIMO || atoi(ano) > ANO_MAXIMO){
-        cout << "ano inválido" << endl;
         throw invalid_argument("Argumento invalido.");
     }
     else{
@@ -190,7 +186,6 @@ void Data::validar(string data) throw (invalid_argument){
 
         for(i = 0; mes[i] != '\0'; ++i){
             if(!isalpha(mes[i])){
-                cout << "Há algo diferente de letra no mes" << endl;
                 throw invalid_argument("Argumento invalido.");
             }
         }
@@ -201,16 +196,13 @@ void Data::validar(string data) throw (invalid_argument){
         // o limite dado ao mês de fereiro em ano não bissexto
 
         if(verificadorMes == INVALIDO){
-            cout << "Nao eh mes" << endl;
             throw invalid_argument("Argumento invalido.");
         }
         else if(dia > numeroDiasDoMes[verificadorMes - 1]){
-            cout << "Dia invalido para o mes" << endl;
             throw invalid_argument("Argumento invalido.");
         }
         else{
             if((verificaBissexto(atoi(ano)) == INVALIDO)  && (mes == "fev") && ( dia > FEVEREIRO_NAO_BISSEXTO )){
-                cout << "29 de fev de um ano nao bissexto" << endl;
                 throw invalid_argument("Argumento invalido.");
             }
         }
@@ -224,27 +216,18 @@ void Data::setData(string data) throw (invalid_argument){
 
 void DataDeValidade::validar(string dataDeValidade) throw (invalid_argument){
     int verificadorTamanho;
-    int i;
     string mes;
     char ano[TAMANHO_PADRAO_ANO];
-    char numMes [TAMANHO_PADRAO_MES];
+    int numMes;
     verificadorTamanho = dataDeValidade.size();
 
     mes = dataDeValidade.substr(0,2);
     mes[2] = '\0';
-    cout << mes << endl;
-    for (i = 0; i < mes.size(); ++i){
-        cout << numMes[i] << "=" << mes[i] << endl;
-        numMes[i] = mes[i];
-    }
-    numMes[2] = '\0';
-    cout << "nummes " << numMes << endl;
+    numMes = stoi(mes, 0);
 
     memcpy(ano, &dataDeValidade[3],2);
     ano[2] = '\0';
 
-    cout << "validade" << numMes << "ok" << endl;
-    cout << "validade" << ano << endl;
     // Lança exceção se o tamanho da string dataDeValidade for diferente do tamanho esperado
 
     if(verificadorTamanho != TAMANHO){
@@ -260,7 +243,7 @@ void DataDeValidade::validar(string dataDeValidade) throw (invalid_argument){
 
         // Lança exceção se o valor do mês ou do ano estiver fora do intervalo definido com válido
 
-        if(atoi(numMes) < MES_MINIMO || atoi(numMes) > MES_MAXIMO ||
+        if(numMes < MES_MINIMO || numMes > MES_MAXIMO ||
            atoi(ano) < ANO_MINIMO || atoi(ano) > ANO_MAXIMO){
             throw invalid_argument("Argumento invalido.");
         }

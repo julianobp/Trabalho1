@@ -167,7 +167,6 @@ void TUData::tearDown(){
 }
 
 void TUData::testarCenarioSucesso(){
-    cout << VALOR_VALIDO << endl;
     try{
         data->setData(VALOR_VALIDO);
         if (data->getData() != VALOR_VALIDO){
@@ -180,7 +179,6 @@ void TUData::testarCenarioSucesso(){
 }
 
 void TUData::testarCenarioFalha(){
-    cout << VALOR_INVALIDO << endl;
     try{
         data->setData(VALOR_INVALIDO);
         resultado = FALHA;
@@ -195,7 +193,6 @@ int TUData::run(){
     testarCenarioSucesso();
     testarCenarioFalha();
     tearDown();
-        cout << "Data: " << resultado << endl;
     return resultado;
 }
 

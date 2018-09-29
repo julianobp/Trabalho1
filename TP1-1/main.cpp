@@ -58,14 +58,14 @@ int main()
     switch(testeData.run()){
         case TUData::SUCESSO: cout << "SUCESSO" << endl;
                                  break;
-        case TUData::FALHA  : cout << "DataFALHA" << endl;
+        case TUData::FALHA  : cout << "FALHA" << endl;
                                  break;
     }
 
     switch(testeDataDeValidade.run()){
         case TUDataDeValidade::SUCESSO: cout << "SUCESSO" << endl;
                                         break;
-        case TUDataDeValidade::FALHA  : cout << "ValidadeFALHA" << endl;
+        case TUDataDeValidade::FALHA  : cout << "FALHA" << endl;
                                         break;
     }
 
