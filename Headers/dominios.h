@@ -193,7 +193,7 @@ public:
 };
 
 /**
- *@brief Classe responsável por armazenar e verifcar a data.
+ *@brief Classe responsável por armazenar e verificar a data.
  *
  * Deve ter o formato DD/MMM/AAAA (onde DD é número de 01 a 31, MMM é jan, fev, mar, abr, mai,
  * jun, jul, ago, set, out, nov ou dez e AAAA é número de 2000 a 2099) e deve considerar anos bissextos. 
@@ -428,7 +428,7 @@ public:
 };
 
 /**
- *@brief Classe responsável por armazenar e verificar o nome do usuário.
+ *@brief Classe responsável por armazenar e verificar o nome do usuário ou de cidade.
  *
  * Deve conter no máximo 15 caracteres e cada um destes pode ser letra, espaço ou ponto.
  * Pelos menos um caracter é letra, não deve haver espaços seguidos e o ponto deve ser precedido por letra.
