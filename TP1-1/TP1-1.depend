@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1537487917 source:c:\users\juliano\documents\estudos\unb\4 semestre\técnicas de programação 1\tp1-1\entidades.cpp
+	"entidades.h"
+
+1537931186 c:\users\juliano\documents\estudos\unb\4 semestre\técnicas de programação 1\tp1-1\entidades.h
+	"dominios.h"
+	<string>
+
+1538107517 c:\users\juliano\documents\estudos\unb\4 semestre\técnicas de programação 1\tp1-1\dominios.h
+	<stdexcept>
+	<string>
+
+1538244764 source:c:\users\juliano\documents\estudos\unb\4 semestre\técnicas de programação 1\tp1-1\dominios.cpp
+	"dominios.h"
+	<string>
+	<cstring>
+	<vector>
+	<cstdlib>
+	<locale>
+	<iostream>
+
+1538228185 source:c:\users\juliano\documents\estudos\unb\4 semestre\técnicas de programação 1\tp1-1\main.cpp
+	<iostream>
+	"dominios.h"
+	"entidades.h"
+	"testesDominios.h"
+	"testesEntidades.h"
+
+1538229955 c:\users\juliano\documents\estudos\unb\4 semestre\técnicas de programação 1\tp1-1\testesdominios.h
+	"dominios.h"
+	<string>
+
+1537931186 c:\users\juliano\documents\estudos\unb\4 semestre\técnicas de programação 1\tp1-1\testesentidades.h
+	"entidades.h"
+	<string>
+
+1538244742 source:c:\users\juliano\documents\estudos\unb\4 semestre\técnicas de programação 1\tp1-1\testesdominios.cpp
+	"testesDominios.h"
+	<iostream>
+	<string>
+
+1537673751 source:c:\users\juliano\documents\estudos\unb\4 semestre\técnicas de programação 1\tp1-1\testesentidades.cpp
+	"testesEntidades.h"
+	<iostream>
+
