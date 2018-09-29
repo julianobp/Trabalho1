@@ -574,7 +574,7 @@ int Senha::verificaRepeticao(string senha) throw (invalid_argument){
         caracteres[i] = 0;
     }
 
-    for (i = 0; senha[i] != '\0'; i++){
+    for (i = 0; senha[i] != '\0'; ++i){
 
         // Se o caracter já tiver ocorrido, retorna 1 confirmando uma repetição, pois o loop só
         // visita uma posição no vetor caracteres quando há uma ocorrência.
