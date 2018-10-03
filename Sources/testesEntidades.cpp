@@ -43,6 +43,10 @@ void TUUsuario::testarCenarioSucesso(){
         if(auxiliarSenha.getSenha() == VALOR_VALIDO_SENHA){
             resultado = SUCESSO;
         }
+
+        delete nome;
+        delete identificador;
+        delete senha;
 }
 
 int TUUsuario::run(){
@@ -142,6 +146,15 @@ void TUAcomodacao::testarCenarioSucesso(){
         resultado = SUCESSO;
     }
 
+    delete identificador;
+    delete tipoAcomodacao;
+    delete capacidade;
+    delete dataInicio;
+    delete dataTermino;
+    delete cidade;
+    delete sigla;
+    delete preco;
+
 }
 
 int TUAcomodacao::run(){
@@ -184,6 +197,9 @@ void TUCartaoDeCredito::testarCenarioSucesso(){
     if(auxiliarDataDeValidade.getDataDeValidade() == VALOR_VALIDO_VALIDADE){
         resultado = SUCESSO;
     }
+
+    delete numeroDeCartaoDeCredito;
+    delete dataDeValidade;
 }
 
 int TUCartaoDeCredito::run(){
@@ -234,6 +250,10 @@ void TUContaCorrente::testarCenarioSucesso(){
     if(auxiliarBanco.getBanco() == VALOR_VALIDO_BANCO){
         resultado = SUCESSO;
     }
+
+    delete numeroConta;
+    delete agencia;
+    delete banco;
     
 }
 
